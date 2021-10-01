@@ -1,27 +1,128 @@
 <!DOCTYPE html>
-  <html>
+<html>
 
-  <head>
-      <title>CreateAcc</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
+<head>
+  <style>
+    input[type=text],
+    input[type=password] {
+      width: 50%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
 
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
-    <script type="text/javascript" language="javascript">
-      $(document).ready(function () {
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
 
-        /* load the admin menu bar */
-        $(function () {
-          $("#adminMenuBar").load("adminMenuBar.html");
-        });
-        
+
+
+    /* Set a style for the submit/register button */
+    .registerbtn {
+      background-color: #d13f13;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+      opacity: 1;
+    }
+
+
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    .r_text {
+      color: #504a57;
+    }
+
+
+
+    /* -------------------------------------------------------------------- */
+
+
+    input[type="radio"]{
+  margin: 0 10px 0 10px;
+}
+    
+  </style>
+  <title>CreateAcc</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
+
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+
+      /* load the admin menu bar */
+      $(function () {
+        $("#adminMenuBar").load("adminMenuBar.html");
       });
-    </script>
-  </head>
 
-  <body>
-    <div id="adminMenuBar"></div>
-  </body>
+    });
+  </script>
+</head>
 
-  </html>
+<body>
+  <div id="adminMenuBar"></div>
+
+
+
+  </br></br></br>
+  <center>
+
+
+    <div class="main">
+      <form action="" method="POST">
+        <div class="container">
+          <h1 class="r_text">Create Account</h1>
+          <p class="r_text">Please fill in this form to create an account.</p>
+          <hr>
+
+          <br>
+          <label for="Name"><b></b></label>
+          <input type="text" placeholder="Username" name="name" id="name" required>
+
+          <br>
+          <label for="psw"><b></b></label>
+          <input type="password" placeholder="Password" name="psw" id="psw"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            required>
+
+            <br />  
+            <input type="radio" id="admin" name="type" value="admin"><label><b>Admin</b></label>
+            <input type="radio" id="teacher" name="type" value="teacher"><label><b>Teacher</b></label>
+            <input type="radio" id="teacher" name="type" value="teacher"><label><b>Teacher</b></label>
+            <br />
+          
+          <br />
+          <hr>
+
+          <br />
+          <button type="submit" class="registerbtn" name="registerFormSubmit">Create Account </button>
+        </div>
+      </form>
+    </div>
+    
+
+
+  </center>
+
+
+</body>
+
+</html>
