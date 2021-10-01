@@ -73,3 +73,9 @@ input.form_input{
 #editBtn{
   background-color:red;
 }
+#saveBtn{
+    background-color:green;
+}
+input.active{
+  background-color: #lightblue;
+}
