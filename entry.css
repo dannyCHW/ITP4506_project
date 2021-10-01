@@ -1,0 +1,106 @@
+
+
+.entrytable{
+    position: absolute;
+    top: 35%;
+    margin-top: -50px;
+  
+}
+
+.buttonAdmin {
+    background-color: #4CAF50;  
+
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    height: 100px;
+    border-radius: 12px;
+}
+
+
+.buttonAdmin {
+    background-color: #e8edf2;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.buttonAdmin:hover {
+    background-color: #4CAF50;
+    color: #e8edf2;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+.buttonTeacher {
+    background-color: #483cb4;
+    
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    height: 100px;
+    border-radius: 12px;
+
+}
+
+
+.buttonTeacher {
+    background-color: #e8edf2;
+    color: black;
+    border: 2px solid #483cb4;
+}
+
+.buttonTeacher:hover {
+    background-color: #483cb4;
+    color: #e8edf2;
+}
+
+
+
+/* ------------------------------------------------------------------------------ */
+
+
+.buttonStudent {
+    background-color: #e07722;
+    
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    height: 100px;
+    border-radius: 12px;
+}
+
+
+.buttonStudent {
+    background-color: #e8edf2;
+    color: black;
+    border: 2px solid #e07722;
+}
+
+.buttonStudent:hover {
+    background-color: #e07722;
+    color: #e8edf2;
+}

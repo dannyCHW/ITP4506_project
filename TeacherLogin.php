@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     if(mysqli_num_rows($rs) <= 0){
         echo "<script type='text/javascript'>
         alert('Invaild! User does not exist.');
-        window.location.href = 'indexHtml.php';
+        window.location.href = 'LoginHTML.html';
         </script>";
         
     } else {

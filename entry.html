@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="entry.css">
+    <style>
+    </style>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#btnTeacher").click(function(){
+                window.location = "TeacherLogin.html";
+            });
+        });
+    </script>
+</head>
+
+<body style="background-color:#e8edf2;">
+    <h1>Attendance Online Login</h1>
+    <table class="entrytable" style="width:100%">
+        <tr>
+            <td>
+                <center>
+                    <h1>Are you?</h1>
+                    <button class="buttonAdmin">
+                        <h3>Admin</h3>
+                    </button>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <button class="buttonTeacher" id="btnTeacher">
+                        <h3>Teacher</h3>
+                    </button></center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+                    <button class="buttonStudent">
+                        <h3>Student</h3>
+                    </button></center>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
