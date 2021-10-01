@@ -26,6 +26,25 @@
         }).mouseleave(function() {
             $('.list').removeClass("active");
         });
+        $("#editBtn").click(function(){
+          $('.form_input').prop('readonly', false);
+          $(".form_input").css("background-color", "#fff");
+          $(this).hide();
+          $('#saveBtn').removeAttr('hidden');
+        });
+        $("#saveBtn").click(function(){
+          var newPassword1 = $("#newPassword1").val();
+          var newPassword2 = $("#newPassword2").val();
+          if(newPassword1 != newPassword2){
+            alert("New password are not match")
+          }
+          /* 攞舊password */
+          else{
+            /* write in database*/
+            location.reload();
+          }
+
+        });
       });
     </script>
 </head>
@@ -68,14 +87,16 @@
   </div>
   </div>
   <div class="canvas_body">
-    <form action="" class="proBody">
-          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" /></p>
-          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off"/></p>
-          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off"/></p>
-          <p>Old Password: <input type="#" id="#" class="form_input" autocomplete="off"/></p>
-          <p>New Password: <input type="#" id="#" class="form_input" autocomplete="off"/></p>
-          <button id="editBtn" class="button">Edit</button>
-    </form>
+    <div action="" class="proBody">
+      <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
+      <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
+      <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
+      <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
+      <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
+      <p>Repeated Password: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
+      <button id="editBtn" class="button">Edit</button>
+      <button id="saveBtn" class="button" hidden>Save</button>
+    </div>
   </div>
 
 </body>
