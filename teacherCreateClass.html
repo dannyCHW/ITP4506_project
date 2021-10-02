@@ -1,9 +1,42 @@
 <!<!DOCTYPE html>
 <html>
 <head>
+    <style>
+    body{
+      font-weight: bold;
+    }
+      form{
+        margin-top:50px;
+      }
+      .topDiv{
+        background-color: grey;
+        height: 10%;
+        width: 100%;
+        font-size: 30px;
+        padding-top: 20px;
+        text-align: center;
+      }
+       .proBody{
+        height:300px;
+      }
+      #className{
+        margin-top: 17%;
+      }
+
+      #submitBtn{
+        background-color: green;
+      }
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #fff;
+        opacity: 1; /* Firefox */
+        font-weight: bold;
+      }
+
+    </style>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
-        <link rel="stylesheet" type="text/css" href="adminCss/profile.css">
+    <link rel="stylesheet" type="text/css" href="adminCss/profile.css">
+
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript"src="jslib/jquery-1.11.1.js"></script>
@@ -25,38 +58,58 @@
         }).mouseleave(function() {
             $('.list').removeClass("active");
         });
+        $("#editBtn").click(function(){
+          $('.form_input').prop('readonly', false);
+          $(".form_input").css("background-color", "#fff");
+          $(this).hide();
+          $('#saveBtn').removeAttr('hidden');
+        });
+        $("#saveBtn").click(function(){
+          var newPassword1 = $("#newPassword1").val();
+          var newPassword2 = $("#newPassword2").val();
+          if(newPassword1 != newPassword2){
+            alert("New password are not match")
+          }
+          /* 攞舊password */
+          else{
+            /* write in database*/
+            location.reload();
+          }
+
+        });
       });
     </script>
 </head>
 <body>
-  <div class="navigation">
-    <ul>
-      <li class="list">
-        <a href="teacherLobby.html">
-          <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-          <span class="title">Home Page</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="teacherProfile.html">
-          <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-          <span class="title">Profile</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="#">
-          <span class="icon"><ion-icon name="search-outline"></ion-icon></span>
-          <span class="title">Class Mangement</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="teacherCreateClass.html">
-          <span class="icon"><ion-icon name="build-outline"></ion-icon></span>
-          <span class="title">Create Class</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <div class="canvas">
+    <div class="navigation">
+      <ul>
+        <li class="list">
+          <a href="teacherLobby.html">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home Page</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="teacherProfile.html">
+            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="teacherClass.html">
+            <span class="icon"><ion-icon name="search-outline"></ion-icon></span>
+            <span class="title">Class Mangement</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="teacherCreateClass.html">
+            <span class="icon"><ion-icon name="build-outline"></ion-icon></span>
+            <span class="title">Create Class</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   <div class="toggle">
     <ion-icon name="menu-outline" class="open"></ion-icon>
     <ion-icon name="close-outline" class="close"></ion-icon>
@@ -64,19 +117,18 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <div class="canvas_body">
-    <div action="" class="proBody">
-      <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
-      <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
-      <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
-      <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
-      <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
-      <p>Repeated Password: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
-      <button id="editBtn" class="button">Edit</button>
-      <button id="saveBtn" class="button" hidden>Save</button>
-    </div>
+  <div class="topDiv">
+    <h3> Create Class </h3>
   </div>
 
+  <div class="canvas_body">
+    <form action="" class="proBody">
+      <p>Class Name: <input type="text" id="className" class="form_input" autocomplete="off" required/></p>
+      <p>Year: <input type="text" id="year" class="form_input" autocomplete="off" required/></p>
+      <p>Information: <input type="text" id="year" class="form_input" placeholder="(Can Be Blank)" autocomplete="off" /></p>
+      <button type="submit" id="submitBtn" class="button" >Submit</button>
+    </form>
+  </div>
 
 </body>
 </html>
