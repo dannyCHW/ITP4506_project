@@ -13,8 +13,13 @@
     <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
+
             $("#btnTeacher").click(function(){
                 window.location = "TeacherLogin.html";
+            });
+
+            $("#btnAdmin").click(function(){
+                window.location = "adminLogin.html";
             });
         });
     </script>
@@ -27,7 +32,7 @@
             <td>
                 <center>
                     <h1>Are you?</h1>
-                    <button class="buttonAdmin">
+                    <button class="buttonAdmin" id="btnAdmin">
                         <h3>Admin</h3>
                     </button>
                 </center>
