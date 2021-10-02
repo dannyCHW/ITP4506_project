@@ -25,6 +25,17 @@
         }).mouseleave(function() {
             $('.list').removeClass("active");
         });
+
+        $("table.classTable tr").click(function(){
+          $(".divTable").hide();
+          $(".divStudentList").show();
+          $("#topic").text("Student List");
+        });
+        $("#backBtn").click(function(){
+          $(".divStudentList").hide();
+          $(".divTable").show();
+          $("#topic").text("View Class");
+        });
       });
     </script>
 </head>
@@ -66,12 +77,19 @@
 
   <div class="canvas">
     <div class="head">
-      <h3> View Class </h3>
+      <h3 id="topic"> View Class </h3>
     </div>
     <div class="divTable">
       <table class="classTable">
         <tr class="firstRow"><th>Class name</th><th>Year</th><th>Member</th></tr>
         <tr><td>2A</td><td>2021</td><td>32</td></tr>
+      </table>
+    </div>
+    <div class="divStudentList" hidden>
+      <button id="backBtn">Back To Class List</button>
+      <table class="studebtTable">
+        <tr class="firstRow"><th>Student Name</th><th>Class</th><th>Phone</th></tr>
+        <tr><td>Wong King Chun</td><td>2A</td><td>33331111</td></tr>
       </table>
     </div>
   </div>
