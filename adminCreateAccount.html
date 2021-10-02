@@ -11,12 +11,14 @@
       display: inline-block;
       border: none;
       background: #f1f1f1;
+      border-radius: 12px;
     }
 
     input[type=text]:focus,
     input[type=password]:focus {
       background-color: #ddd;
       outline: none;
+      border-radius: 12px;
     }
 
 
@@ -31,6 +33,7 @@
       cursor: pointer;
       width: 50%;
       opacity: 0.9;
+      border-radius: 12px;
     }
 
     .registerbtn:hover {
@@ -53,10 +56,22 @@
     /* -------------------------------------------------------------------- */
 
 
-    input[type="radio"]{
-  margin: 0 10px 0 10px;
-}
-    
+    input[type="radio"] {
+      margin: 0 10px 0 10px;
+    }
+
+    .adminb {
+      color: #4CAF50;
+    }
+
+    .teacherb {
+      color: #483cb4;
+    }
+
+    .studentb {
+      color: #e07722;
+    }
+
   </style>
   <title>CreateAcc</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -70,6 +85,21 @@
       /* load the admin menu bar */
       $(function () {
         $("#adminMenuBar").load("adminMenuBar.html");
+      });
+
+      $("#adminR").click(function(){
+        $("#name").attr("placeholder","Admin's name");
+        $("#submitbtn").text("Create Account for Admin");
+      });
+
+      $("#teacherR").click(function(){
+        $("#name").attr("placeholder","Teacher's name");
+        $("#submitbtn").text("Create Account for Teacher");
+      });
+
+      $("#studentR").click(function(){
+        $("#name").attr("placeholder","Student's name");
+        $("#submitbtn").text("Create Account for Student");
       });
 
     });
@@ -86,38 +116,41 @@
 
 
     <div class="main">
-      <form action="" method="POST">
+      <form action="adminCreateAccount.php" method="post">
         <div class="container">
           <h1 class="r_text">Create Account</h1>
           <p class="r_text">Please fill in this form to create an account.</p>
-          <hr>
-
-          <br>
-          <label for="Name"><b></b></label>
-          <input type="text" placeholder="Username" name="name" id="name" required>
-
-          <br>
-          <label for="psw"><b></b></label>
-          <input type="password" placeholder="Password" name="psw" id="psw"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-            required>
-
-            <br />  
-            <input type="radio" id="admin" name="type" value="admin"><label><b>Admin</b></label>
-            <input type="radio" id="teacher" name="type" value="teacher"><label><b>Teacher</b></label>
-            <input type="radio" id="teacher" name="type" value="teacher"><label><b>Teacher</b></label>
-            <br />
-          
           <br />
           <hr>
 
           <br />
-          <button type="submit" class="registerbtn" name="registerFormSubmit">Create Account </button>
+          <input type="radio" id="adminR" name="type" value="admin" required><label><b class="adminb">Admin</b></label>
+          <input type="radio" id="teacherR" name="type" value="teacher"><label><b class="teacherb">Teacher</b></label>
+          <input type="radio" id="studentR" name="type" value="student"><label><b class="studentb">Student</b></label>
+          <br />
+
+          <br>
+          <label><b></b></label>
+          <input type="text" placeholder="Name" name="name" id="name" required>
+
+          <br>
+          <label><b></b></label>
+          <input type="text" placeholder="Username" name="username" id="username" required>
+
+          <br>
+          <label><b></b></label>
+          <input type="password" placeholder="Password" name="psw" id="psw" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            
+
+          <br />
+          <hr>
+
+          <br />
+          <button type="submit" name="submit" class="registerbtn" id="submitbtn"><b>Create Account</b> </button>
         </div>
       </form>
     </div>
-    
+
 
 
   </center>
