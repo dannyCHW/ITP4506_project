@@ -43,3 +43,4 @@ if(isset($_POST['submit'])){
 }
 
 echo"window.location.href = 'indexHtml.php';";
+?>
