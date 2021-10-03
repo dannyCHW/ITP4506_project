@@ -36,6 +36,22 @@
           $(".divTable").show();
           $("#topic").text("View Class");
         });
+        $("table.studebtTable tr").click(function(){
+          $(".divStudentList").hide();
+          $(".divEditStudent").show();
+          $("#topic").text("Edit Student Profile");
+        });
+        $("#backStudentListBtn").click(function(){
+          $(".divEditStudent").hide();
+          $('.form_input').val("");
+          $('.form_input').prop('readonly', true);
+          $(".divStudentList").show();
+        });
+        $("#editBtn").click(function(){
+            $('.form_input').prop('readonly', false);
+            $(this).hide();
+            $("#saveBtn").show();
+        });
       });
     </script>
 </head>
@@ -91,6 +107,19 @@
         <tr class="firstRow"><th>Student Name</th><th>Class</th><th>Phone</th></tr>
         <tr><td>Wong King Chun</td><td>2A</td><td>33331111</td></tr>
       </table>
+    </div>
+    <div class="divEditStudent" hidden>
+        <button id="backStudentListBtn">Back To Class List</button>
+        <div action="" class="proBody">
+          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
+          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
+          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
+          <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
+          <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
+          <p>Repeated: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
+          <button id="editBtn" class="buttonForm">Edit</button>
+          <button id="saveBtn" class="buttonForm" hidden>Save</button>
+        </div>
     </div>
   </div>
 </body>
