@@ -33,7 +33,7 @@ if(isset($_POST['adminLogin'])){
             $_SESSION['username'] = $username;
 
             echo "<script type='text/javascript'>
-            window.location.href = 'adminLobby.html';
+            window.location.href = 'adminLobby.php';
             </script>";
 
         }
