@@ -2,6 +2,7 @@
   <html>
 
   <head>
+    <?php include 'checkSession.php'; ?>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
 
@@ -20,6 +21,7 @@
   </head>
 
   <body>
+    <div id="seesionLogin"></div>
     <div id="adminMenuBar"></div>
   </body>
 

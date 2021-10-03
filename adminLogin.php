@@ -28,6 +28,10 @@ if(isset($_POST['adminLogin'])){
 
         } else {
 
+            session_start();
+
+            $_SESSION['username'] = $username;
+
             echo "<script type='text/javascript'>
             window.location.href = 'adminLobby.html';
             </script>";
@@ -40,9 +44,15 @@ if(isset($_POST['adminLogin'])){
 
 } else {
 
-    echo"alert('Something wrong');";
+    echo "<script type='text/javascript'>
+            window.location.href = 'adminLogin.html';
+            </script>";
 
 }
+
+echo "<script type='text/javascript'>
+            alert('Something Wrong');
+            </script>";
 
 
 ?>
