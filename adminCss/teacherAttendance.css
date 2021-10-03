@@ -1,0 +1,21 @@
+@import url('http://fonts.googleapics.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+.divbody{
+  height: 100%;
+  width: 100%;
+}
+.divTopic{
+  height: 10%;
+  width: 100%;
+  background-color: lightblue;
+}
+.divTopic h3{
+  text-align: center;
+  font-weight: bold;
+  padding-top: 20px;
+  font-size: 40px;
+}
+.divForm{
+  background: lightgreen;
+  height: 90%;
+}
