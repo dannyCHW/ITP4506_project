@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['teacherUsername'])){
+    if(isset($_SESSION['studentName'])){
 
     } else {
 
@@ -12,7 +12,7 @@
             sleep(1);
 
         echo "<script type='text/javascript'>
-            window.location.href = 'TeacherLogin.html';
+            window.location.href = 'studentLogin.html';
             </script>";
 
     }
