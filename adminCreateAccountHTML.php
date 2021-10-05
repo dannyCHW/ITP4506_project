@@ -71,7 +71,11 @@
     .studentb {
       color: #e07722;
     }
+
+
   </style>
+
+  
   <title>CreateAcc</title>
   <?php include 'checkSession.php'; ?>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -82,7 +86,7 @@
   <script type="text/javascript" language="javascript">
     $(document).ready(function() {
 
-    
+
       $("#adminR").click(function() {
         $("#name").attr("placeholder", "Admin's name");
         $("#submitbtn").text("Create Account for Admin");

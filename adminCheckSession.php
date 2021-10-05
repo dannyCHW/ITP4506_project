@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['adminUsername'])){
         
     } else {
         
@@ -14,7 +14,6 @@
         echo "<script type='text/javascript'>
             window.location.href = 'adminLogin.php';
             </script>";
-
             
     }
 ?>

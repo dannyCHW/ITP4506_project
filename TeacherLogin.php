@@ -28,19 +28,23 @@ if(isset($_POST['teacherLogin'])){
 
         } else {
 
+            session_start();
+
+            $_SESSION['teacherUsername'] = $username;
+
             echo "<script type='text/javascript'>
-            window.location.href = 'teacherLobby.html';
+            window.location.href = 'teacherLobbyHTML.php';
             </script>";
 
         }
         
-        
     }
-
 
 } else {
 
-    echo"alert('Something wrong');";
+    echo "<script type='text/javascript'>
+            window.location.href = 'teacherLogin.html';
+            </script>";
 
 }
 ?>
