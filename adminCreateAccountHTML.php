@@ -71,34 +71,30 @@
     .studentb {
       color: #e07722;
     }
-
   </style>
   <title>CreateAcc</title>
+  <?php include 'checkSession.php'; ?>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
 
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
   <script type="text/javascript" language="javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-      /* load the admin menu bar */
-      $(function () {
-        $("#adminMenuBar").load("adminMenuBar.html");
-      });
-
-      $("#adminR").click(function(){
-        $("#name").attr("placeholder","Admin's name");
+    
+      $("#adminR").click(function() {
+        $("#name").attr("placeholder", "Admin's name");
         $("#submitbtn").text("Create Account for Admin");
       });
 
-      $("#teacherR").click(function(){
-        $("#name").attr("placeholder","Teacher's name");
+      $("#teacherR").click(function() {
+        $("#name").attr("placeholder", "Teacher's name");
         $("#submitbtn").text("Create Account for Teacher");
       });
 
-      $("#studentR").click(function(){
-        $("#name").attr("placeholder","Student's name");
+      $("#studentR").click(function() {
+        $("#name").attr("placeholder", "Student's name");
         $("#submitbtn").text("Create Account for Student");
       });
 
@@ -107,9 +103,9 @@
 </head>
 
 <body>
-  <div id="adminMenuBar"></div>
-
-
+  <?php
+  include 'adminMenuBar.html';
+  ?>
 
   </br></br></br>
   <center>
@@ -140,7 +136,7 @@
           <br>
           <label><b></b></label>
           <input type="password" placeholder="Password" name="psw" id="psw" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-            
+
 
           <br />
           <hr>
