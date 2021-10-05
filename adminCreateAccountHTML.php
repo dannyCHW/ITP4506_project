@@ -2,84 +2,12 @@
 <html>
 
 <head>
-  <style>
-    input[type=text],
-    input[type=password] {
-      width: 50%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-      border-radius: 12px;
-    }
 
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-      border-radius: 12px;
-    }
-
-
-
-    /* Set a style for the submit/register button */
-    .registerbtn {
-      background-color: #d13f13;
-      color: white;
-      padding: 16px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 50%;
-      opacity: 0.9;
-      border-radius: 12px;
-    }
-
-    .registerbtn:hover {
-      opacity: 1;
-    }
-
-
-    .slideshow-container {
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
-    }
-
-    .r_text {
-      color: #504a57;
-    }
-
-
-
-    /* -------------------------------------------------------------------- */
-
-
-    input[type="radio"] {
-      margin: 0 10px 0 10px;
-    }
-
-    .adminb {
-      color: #4CAF50;
-    }
-
-    .teacherb {
-      color: #483cb4;
-    }
-
-    .studentb {
-      color: #e07722;
-    }
-
-
-  </style>
-
-  
   <title>CreateAcc</title>
-  <?php include 'checkSession.php'; ?>
+  <?php include 'adminCheckSession.php'; ?>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
+  <link rel="stylesheet" type="text/css" href="adminCss/adminCreateAccount.css">
 
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
