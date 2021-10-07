@@ -46,7 +46,90 @@
       border-bottom: 2px solid #009879;
     }
 
-    
+    /* ------------------------------- */
+
+
+    .btnSBUAdmin {
+      border: none;
+      color: #e8edf2;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 150px;
+      border-radius: 5px;
+    }
+
+
+    .btnSBUAdmin {
+      color: black;
+      border: 2px solid #4CAF50;
+    }
+
+    .btnSBUAdmin:hover {
+      background-color: #4CAF50;
+      color: #e8edf2;
+    }
+
+
+    /* ----------------------- */
+
+    .btnSBUTeacher {
+      border: none;
+      color: #e8edf2;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 150px;
+      border-radius: 5px;
+    }
+
+
+    .btnSBUTeacher {
+
+      color: black;
+      border: 2px solid #483cb4;
+    }
+
+    .btnSBUTeacher:hover {
+      background-color: #483cb4;
+      color: #e8edf2;
+    }
+
+    /* --------------- */
+
+    .btnSBUStudent {
+      border: none;
+      color: #e8edf2;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 150px;
+      border-radius: 5px;
+    }
+
+
+    .btnSBUStudent {
+
+      color: black;
+      border: 2px solid #e07722;
+    }
+
+    .btnSBUStudent:hover {
+      background-color: #e07722;
+      color: #e8edf2;
+    }
   </style>
 
   <?php include 'adminCheckSession.php'; ?>
@@ -58,7 +141,51 @@
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
   <script type="text/javascript" language="javascript">
-    $(document).ready(function() {});
+    function goPhp(v) {
+
+      var asd = {
+        is: v
+      };
+
+      $.ajax({
+        type: "POST",
+        url: 'test.php',
+        data: asd,
+        datatype: 'json',
+        cache: false,
+        success: function(data) {
+
+
+          const myJSON = data;
+          //alert(myJSON);
+          const myObjarr = JSON.parse(myJSON);
+          //alert(myObjarr[0].adminID);
+
+          var content = "";
+
+          if (v == "admin") {
+
+            $("#TBtitle").replaceWith("<thead><tr><th>adminID</th><th>adminName</th></tr></thead>");
+
+            for (let i in myObjarr) {
+              content += "<tr><td>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td></tr>";
+            }
+
+            $("#replaceMent").replaceWith(content);
+
+          }
+
+        }
+      });
+    }
+
+    $(document).ready(function() {
+
+      $(".btnSBUAdmin").click(function() {
+        goPhp("admin");
+      });
+
+    });
   </script>
 </head>
 
@@ -68,32 +195,35 @@
   <br />
   <!-- <div class="sb"><input type="text" class="search" placeholder="Search.." name="search"></div> -->
   <center>
-    
-  <input type="text" class="search" placeholder="Search.." name="search">
 
-  <br />
-  <div></div>
+    <input type="text" class="search" placeholder="Search.." name="search">
 
-  <br />
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Class</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Dom</td>
-        <td>3B</td>
-      </tr>
-      <tr>
-        <td>Melissa</td>
-        <td>2A</td>
-      </tr>
-      <!-- and so on... -->
-    </tbody>
-  </table>
+    <br />
+    <div></div>
+
+    <br />
+    <button class="btnSBUAdmin">Admin</button>
+    <button class="btnSBUTeacher">Teacher</button>
+    <button class="btnSBUStudent">Student</button>
+
+    <br />
+    <div></div>
+    <table class="styled-table">
+      <thead id="TBtitle">
+        <tr>
+          <th>Click the button on top to select user type.</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="TBbody">
+
+        <tr id="replaceMent">
+          <td></td>
+          <td></td>
+        </tr>
+
+      </tbody>
+    </table>
 
   </center>
 

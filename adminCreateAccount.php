@@ -21,13 +21,13 @@ if (isset($_POST['submit'])) {
 
             echo "<script type='text/javascript'>
                 alert('Account Created.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         } else {
 
             echo "<script type='text/javascript'>
                 alert('Username exists.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         }
 
@@ -47,13 +47,13 @@ if (isset($_POST['submit'])) {
 
             echo "<script type='text/javascript'>
                 alert('Account Created.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         } else {
 
             echo "<script type='text/javascript'>
                 alert('Username exists.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         }
 
@@ -74,13 +74,13 @@ if (isset($_POST['submit'])) {
 
             echo "<script type='text/javascript'>
                 alert('Account Created.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         } else {
 
             echo "<script type='text/javascript'>
                 alert('Username exists.');
-                window.location.href = 'adminCreateAccount.html';
+                window.location.href = 'adminCreateAccountHTML.php';
                 </script>";
         }
 
@@ -90,6 +90,6 @@ if (isset($_POST['submit'])) {
 } else {
 
     echo "<script type='text/javascript'>alert('Something wrong');
-        window.location.href = 'adminCreateAccount.html';
+        window.location.href = 'adminCreateAccountHTML.php';
          </script>";
 }
