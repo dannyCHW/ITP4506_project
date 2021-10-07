@@ -28,12 +28,13 @@ if(isset($_POST['studentLogin'])){
 
         } else {
 
+$           $rc = mysqli_fetch_assoc($rs);
             session_start();
 
             $_SESSION['studentUsername'] = $username;
             $_SESSION['studentID'] = $rc['studentID'];
             $_SESSION['studentName'] = $rc['studentName'];
-            $_SESSION['studentPassword'] = $rc['studentPassword'];
+            $_SESSION['studentPassword'] = $pwd;
             $_SESSION['studentInfo'] = $rc['studentInfo'];
 
             echo "<script type='text/javascript'>
