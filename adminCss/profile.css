@@ -6,7 +6,7 @@
 }
 .c1{
   background-color: #AAAAAA;
-  height: 30%;
+  height: 300px;
 }
 .c1 h3{
   text-align: center;
@@ -15,6 +15,7 @@
   padding-bottom: 10px;
 }
 .profileIcon{
+  padding-bottom: 5px;
   display: flex;
   position: relative;
   width: 200px;
@@ -23,7 +24,6 @@
   overflow: hidden;
   cursor: pointer;
   text-align: center;
-  left: 45%;
 }
 img{
   position: absolute;
@@ -35,44 +35,61 @@ img{
 }
 .canvas_body{
   height:70%;
-  width:100p%;
-  padding-left: 25%;
-  padding-right: 25%;
+  width:100%;
 }
 .proBody{
-    border: 4px solid #87CEEB;
+    border: 4px solid #d13f13;
     background-color: #fff;
-    width: 100%;
-    height: 100%;
+    width: 800px;
+    height: 800px;
     border-radius: 45px;
-    padding-right: 30%;
     text-align: right;
 }
 p{
   font-size: 17px;
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 input.form_input{
-  height: 40px;
   width: 50%;
-  border: none;
-  font-size: 17px;
-  border-bottom: 2px solid silver;
-  background-color: #949494;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 12px;
+    margin-right: 150px;
+}
+input.form_input:focus{
+    background-color: #ddd;
+        outline: none;
+        border-radius: 12px;
 }
 .button{
   margin-top: 40px;
-  width: 20%;
-  height: 6%;
+  margin-right: 180px;
+  width: 400px;
+  height: 60px;
   border-radius: 15px;
   color:#fff;
   font-weight: bold;
   font-size: 17px;
 }
 #editBtn{
-  background-color:red;
+  background-color: #d13f13;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 12px;
 }
 #saveBtn{
     background-color:green;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 12px;
 }

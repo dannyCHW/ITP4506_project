@@ -97,7 +97,7 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 
+--
 --
 
 --
@@ -140,17 +140,17 @@ ALTER TABLE `teacher`
   ADD PRIMARY KEY (`teacherID`);
 
 --
--- 
+--
 --
 
 --
--- 
+--
 --
 ALTER TABLE `admin`
   MODIFY `adminID` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- 
+--
 --
 ALTER TABLE `attanence`
   MODIFY `attanenceID` int(50) NOT NULL AUTO_INCREMENT;
@@ -174,18 +174,18 @@ ALTER TABLE `teacher`
   MODIFY `teacherID` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- 
+--
 --
 
 --
--- 
+--
 --
 ALTER TABLE `allocation`
   ADD CONSTRAINT `FK_classID_classID` FOREIGN KEY (`classID`) REFERENCES `class` (`classID`),
   ADD CONSTRAINT `FK_studentID_studentID` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
 
 --
--- 
+--
 --
 ALTER TABLE `attanence`
   ADD CONSTRAINT `FK_classID_class.classID` FOREIGN KEY (`classID`) REFERENCES `class` (`classID`),

@@ -2,9 +2,8 @@
 
 require_once('connectDB.php');
 
-if(isset($_POST['studentLogin'])){
-    $username = $_POST['username'];
-    $pwd = $_POST['password'];
+if(isset($_POST['editProfile'])){
+
 
     $sql = "SELECT * FROM student WHERE studentUsername='$username'";
     $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));

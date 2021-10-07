@@ -29,7 +29,6 @@
 
         $("#editBtn").click(function(){
           $('.form_input').prop('readonly', false);
-          $(".form_input").css("background-color", "#fff");
           $(this).hide();
           $('#saveBtn').removeAttr('hidden');
         });
@@ -50,7 +49,7 @@
     </script>
 </head>
 <body>
-  <div class="canvas">
+  <center class="canvas">
     <div class="navigation">
       <ul>
         <li class="list">
@@ -95,16 +94,16 @@
   </div>
   <div class="canvas_body">
     <div action="" class="proBody">
-          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
-          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
-          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
-          <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
-          <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
-          <p>Repeated Password: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
-          <button id="editBtn" class="button">Edit</button>
-          <button id="saveBtn" class="button" hidden>Save</button>
+      <p>User Name: <input type="text" id="userName" class="form_input" autocomplete="off" readonly/></p>
+      <p>Full Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
+      <p>Student ID: <input type="text" id="stuID" class="form_input" autocomplete="off" readonly/></p>
+      <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
+      <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
+      <p>Repeated Password: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
+      <button id="editBtn" class="button">Edit</button>
+      <button id="saveBtn" class="button" hidden>Save</button>
     </div>
-  </div>
+  </center>
 
 </body>
 </html>
