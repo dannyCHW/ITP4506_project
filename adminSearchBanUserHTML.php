@@ -149,7 +149,7 @@
 
       $.ajax({
         type: "POST",
-        url: 'test.php',
+        url: 'adminSearchUser.php',
         data: asd,
         datatype: 'json',
         cache: false,
