@@ -5,7 +5,7 @@
 
 
   <title>CreateAcc</title>
-  <?php include 'studentCheckSession.php'; ?>
+  <?php include 'teacherCheckSession.php'; ?>
 
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
@@ -20,16 +20,16 @@
 
     $(document).ready(function(){
 
-      var userName = "<?php echo $_SESSION['studentUsername'] ?>";
-      var stuID = "<?php echo $_SESSION['studentID'] ?>";
-      var stuName = "<?php echo $_SESSION['studentName'] ?>";
-      var pwd = "<?php echo $_SESSION['studentPassword'] ?>";
-      var stuInfo =  "<?php echo $_SESSION['studentInfo'] ?>";
+      var teacherUsername = "<?php echo $_SESSION['teacherUsername'] ?>";
+      var teacherID = "<?php echo $_SESSION['teacherID'] ?>";
+      var teacherName = "<?php echo $_SESSION['teacherName'] ?>";
+      var pwd = "<?php echo $_SESSION['password'] ?>";
+      var teacherInfo =  "<?php echo $_SESSION['teacherInfo'] ?>";
 
-      $("#userName").val(userName);
-      $("#name").val(stuName);
-      $("#stuID").val(stuID);
-      $("#stuInfo").val(stuInfo);
+      $("#userName").val(teacherUsername);
+      $("#teachername").val(teacherName);
+      $("#teacherID").val(teacherID);
+      $("#teacherInfo").val(teacherInfo);
 
       /* menu open & close */
       $('.toggle').click(function(){
@@ -51,8 +51,8 @@
       $("#editBtn").click(function(){
         $('.form_input').prop('readonly', false);
         $('#userName').prop('readonly',true);
-        $('#stuID').prop('readonly',true);
-        $('#name').prop('readonly',true);
+        $('#teacherID').prop('readonly',true);
+        $('#teachername').prop('readonly',true);
 
         $(this).hide();
         $('#saveBtn').removeAttr('hidden');
@@ -72,8 +72,7 @@
           alert("Wrong Password , Please Try Again");
         }else{
             alert("Changing successful");
-            $("form[name='stuEdit']").submit();
-            location.reload();
+            $("form[name='teacherEdit']").submit();
         }
 
       });
@@ -81,24 +80,24 @@
   </script>
   </head>
   <body>
-      <?php include 'studentMenuBar.html'; ?>
+      <?php include 'teacherMenuBar.html'; ?>
 
   <center class="c1">
   <h3> Profile Management</h3>
 
   <div class="profileIcon">
-  <img src="student_icon.jpg">
+  <img src="icon.jpg">
   </div>
   </div>
   <div class="canvas_body">
-  <form id="idForm" action="studentEditProfile.php" name="stuEdit" method="post" style="margin-top:25px;">
+  <form id="idForm" action="teacherEditProfile.php" name="teacherEdit" method="post" style="margin-top:25px;">
     <div method="post" class="proBody">
         <p>User Name: <input type="text" name="userName" id="userName" class="form_input" autocomplete="off" readonly/></p>
-        <p>Full Name: <input type="text" name="stuName" id="name" class="form_input" autocomplete="off" readonly/></p>
-        <p>Student ID: <input type="text" name="stuID"id="stuID" class="form_input" autocomplete="off" readonly/></p>
-        <p>Student Info: <input type="text" name="stuInfo" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
-        <p>Old Password: <input type="password" name="oldPassword" id="oldPassword" class="form_input" autocomplete="off"  readonly required/></p>
-        <p>New Password: <input type="password" name="newPassword" id="newPassword1" class="form_input" autocomplete="off" readonly required/></p>
+        <p>Full Name: <input type="text" name="teacherName" id="teachername" class="form_input" autocomplete="off" readonly/></p>
+        <p>Teacher ID: <input type="text" name="teacherID"id="teacherID" class="form_input" autocomplete="off" readonly/></p>
+        <p>Teacher Info: <input type="text" name="teacherInfo" id="teacherInfo" class="form_input" autocomplete="off" readonly/></p>
+        <p>Old Password: <input type="password" name="oldPassword" id="oldPassword" class="form_input" autocomplete="off" readonly required/></p>
+        <p>New Password: <input type="password" name="newPassword" id="newPassword1" class="form_input" autocomplete="off"  readonly required/></p>
         <p>Repeated Password: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly required/></p>
         <button type="button" id="editBtn" class="button">Edit</button>
         <button id="saveBtn" type="button" name="editProfile" class="button" hidden>Save</button>
