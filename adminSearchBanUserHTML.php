@@ -139,10 +139,9 @@
 
 
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
+  <!-- <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script> -->
   <script type="text/javascript" language="javascript">
-    function goPhp(v) {
-
+    function goPHP(v) {
       var asd = {
         is: v
       };
@@ -155,23 +154,52 @@
         cache: false,
         success: function(data) {
 
-
           const myJSON = data;
           //alert(myJSON);
           const myObjarr = JSON.parse(myJSON);
           //alert(myObjarr[0].adminID);
 
-          var content = "";
-
           if (v == "admin") {
 
-            $("#TBtitle").replaceWith("<thead><tr><th>adminID</th><th>adminName</th></tr></thead>");
+            var content = "";
+
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
               content += "<tr><td>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td></tr>";
             }
 
-            $("#replaceMent").replaceWith(content);
+            content += "</tbody></table>";
+
+            $("table").replaceWith(content);
+
+          } else if (v == "teacher") {
+
+            var content = "";
+
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th></tr></thead><tbody id='TBbody'>";
+
+            for (let i in myObjarr) {
+              content += "<tr><td>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td></tr>";
+            }
+
+            content += "</tbody></table>";
+
+            $("table").replaceWith(content);
+
+          } else {
+
+            var content = "";
+
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th></tr></thead><tbody id='TBbody'>";
+
+            for (let i in myObjarr) {
+              content += "<tr><td>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td></tr>";
+            }
+
+            content += "</tbody></table>";
+
+            $("table").replaceWith(content);
 
           }
 
@@ -182,7 +210,15 @@
     $(document).ready(function() {
 
       $(".btnSBUAdmin").click(function() {
-        goPhp("admin");
+        goPHP("admin");
+      });
+
+      $(".btnSBUTeacher").click(function() {
+        goPHP("teacher");
+      });
+
+      $(".btnSBUStudent").click(function() {
+        goPHP("student");
       });
 
     });
