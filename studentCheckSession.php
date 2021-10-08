@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['studentName'])){
+    if(isset($_SESSION['studentUsername'])){
 
     } else {
 

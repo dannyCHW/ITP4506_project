@@ -27,9 +27,7 @@ if(isset($_POST['studentLogin'])){
 
 
         } else {
-
-$           $rc = mysqli_fetch_assoc($rs);
-            session_start();
+          session_start();
 
             $_SESSION['studentUsername'] = $username;
             $_SESSION['studentID'] = $rc['studentID'];

@@ -91,8 +91,8 @@
   </div>
   </div>
   <div class="canvas_body">
-    <form id="idForm" action="studentEditProfile.php" name="stuEdit" method="post">
-  <div method="post" class="proBody">
+  <form id="idForm" action="studentEditProfile.php" name="stuEdit" method="post" style="margin-top:25px;">
+    <div method="post" class="proBody">
         <p>User Name: <input type="text" name="userName" id="userName" class="form_input" autocomplete="off" readonly/></p>
         <p>Full Name: <input type="text" name="stuName" id="name" class="form_input" autocomplete="off" readonly/></p>
         <p>Student ID: <input type="text" name="stuID"id="stuID" class="form_input" autocomplete="off" readonly/></p>
