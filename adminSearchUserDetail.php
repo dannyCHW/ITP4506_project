@@ -2,70 +2,53 @@
 require_once('connectDB.php');
 
 $is = $_POST['users'];
-$uName = $_POST['userName'];
+$uID = $_POST['userID'];
 
 if ($is == "admin"){
 
-    $sql = "SELECT * FROM admin WHERE adminUsername = '$uName'";
+    $sql = "SELECT * FROM admin WHERE adminID = '$uID'";
     $rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     $rc = mysqli_fetch_assoc($rs);
-    // //$arr = (array) null;
 
-         $myObj = new stdClass();
+        $myObj = new stdClass();
         $myObj->adminID = $rc["adminID"];
         $myObj->adminName = $rc["adminName"];
         $myObj->adminUsername = $rc["adminUsername"];
-        $myObj->adminPassword = $rc["adminPassword"];
-
-    //     //array_push($arr, $myObj);  
+        $myObj->adminPassword = $rc["adminPassword"];  
 
     $myJson = json_encode($myObj);
     echo $myJson;
 
 } else if ($is == "teacher"){
 
-    $sql = "SELECT * FROM teacher ";
+    $sql = "SELECT * FROM teacher WHERE teacherID = '$uID'";
     $rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-    
-    $arr = (array) null;
-
-    while ($row = mysqli_fetch_assoc($rs)){
+    $rc = mysqli_fetch_assoc($rs);
 
         $myObj = new stdClass();
-        $myObj->teacherID = $row["teacherID"];
-        $myObj->teacherName = $row["teacherName"];
-        $myObj->teacherUsername = $row["teacherUsername"];
-        $myObj->teacherPassword = $row["teacherPassword"];
-        $myObj->teacherInfo = $row["teacherInfo"];  
-
-        array_push($arr, $myObj);
-        
-    }
+        $myObj->teacherID = $rc["teacherID"];
+        $myObj->teacherName = $rc["teacherName"];
+        $myObj->teacherUsername = $rc["teacherUsername"];
+        $myObj->teacherPassword = $rc["teacherPassword"];
+        $myObj->teacherInfo = $rc["teacherInfo"];  
     
-        $myJson = json_encode($arr);
+        $myJson = json_encode($myObj);
         echo $myJson;
 
 } else {
 
     $sql = "SELECT * FROM student ";
     $rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-    
-    $arr = (array) null;
-
-    while ($row = mysqli_fetch_assoc($rs)){
+    $rc = mysqli_fetch_assoc($rs);
 
         $myObj = new stdClass();
-        $myObj->studentID = $row["studentID"];
-        $myObj->studentName = $row["studentName"];
-        $myObj->studentUsername = $row["studentUsername"];
-        $myObj->studentPassword = $row["studentPassword"];
-        $myObj->studentInfo = $row["studentInfo"];  
-
-        array_push($arr, $myObj);
-        
-    }
+        $myObj->studentID = $rc["studentID"];
+        $myObj->studentName = $rc["studentName"];
+        $myObj->studentUsername = $rc["studentUsername"];
+        $myObj->studentPassword = $rc["studentPassword"];
+        $myObj->studentInfo = $rc["studentInfo"];  
     
-        $myJson = json_encode($arr);
+        $myJson = json_encode($myObj);
         echo $myJson;
 }
 

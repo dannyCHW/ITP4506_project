@@ -29,6 +29,7 @@
 
           var content = "";
           var user = "";
+          var id = 0;
 
           if (v == "admin") {
 
@@ -36,7 +37,7 @@
             content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td><td><button class='detail'>Detail</button></td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td><td><button class='detail'>Detail</button></td></tr>";
             }
 
           } else if (v == "teacher") {
@@ -45,7 +46,7 @@
             content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
             }
 
           } else {
@@ -54,7 +55,7 @@
             content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
             }
 
           }
@@ -92,17 +93,12 @@
     });
 
     $(document).on('click', '.detail', function() {
-      var detaillValID = $(this).parent().parent().children(':first-child').text();
-      var detaillValUname = $(this).parent().parent().children(':nth-child(2)').text();
-
+      var detaillValID = $(this).parent().siblings("#theid").text();
       var useris = $('#savedUser').text();
-
-      //alert(detaillVal);
-      //alert(useris);
 
       var asd2 = {
         users: useris,
-        userName: detaillValUname
+        userID: detaillValID
       };
 
       $.ajax({
@@ -114,19 +110,35 @@
         success: function(data) {
 
           const myJSON = data;
-          //alert(data);  
           const myObjarr = JSON.parse(myJSON);
-          //alert(myObjarr);
-          alert(myObjarr.adminID);
 
-
-          var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
-          var $w = $(w.document.body);
-          $w.html("<p>adminID : " + myObjarr.adminID + "</p>" +
-            "<p>adminName : " + myObjarr.adminName + "</p>" +
-            "<p>adminUserName : " + myObjarr.adminUsername + "</p>" +
-            "<p>adminPassWord : " + myObjarr.adminPassword + "</p>" +
-            "<h3>This window will self-close in 3 seconds.</h3>");
+          if (useris == 'admin') {
+            var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
+            var $w = $(w.document.body);
+            $w.html("<p>adminID : " + myObjarr.adminID + "</p>" +
+              "<p>adminName : " + myObjarr.adminName + "</p>" +
+              "<p>adminUserName : " + myObjarr.adminUsername + "</p>" +
+              "<p>adminPassWord : " + myObjarr.adminPassword + "</p>" +
+              "<h3>This window will self-close in 3 seconds.</h3>");
+          } else if (useris == 'teacher') {
+            var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
+            var $w = $(w.document.body);
+            $w.html("<p>teacherID : " + myObjarr.teacherID + "</p>" +
+              "<p>teacherName : " + myObjarr.teacherName + "</p>" +
+              "<p>teacherUserName : " + myObjarr.teacherUsername + "</p>" +
+              "<p>teacherPassWord : " + myObjarr.teacherPassword + "</p>" +
+              "<p>teacherInfo : " + myObjarr.teacherInfo + "</p>" +
+              "<h3>This window will self-close in 3 seconds.</h3>");
+          } else if (useris == 'student') {
+            var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
+            var $w = $(w.document.body);
+            $w.html("<p>studentID : " + myObjarr.studentID + "</p>" +
+              "<p>studentName : " + myObjarr.studentName + "</p>" +
+              "<p>studentUserName : " + myObjarr.studentUsername + "</p>" +
+              "<p>studentPassWord : " + myObjarr.studentPassword + "</p>" +
+              "<p>studentInfo : " + myObjarr.studentInfo + "</p>" +
+              "<h3>This window will self-close in 3 seconds.</h3>");
+          }
 
           function sleep(time) {
             return new Promise((resolve) => setTimeout(resolve, time));
