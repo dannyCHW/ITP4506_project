@@ -9,8 +9,7 @@
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
   <link rel="stylesheet" type="text/css" href="adminCss/adminCreateAccount.css">
 
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" language="javascript">
     $(document).ready(function() {
 
