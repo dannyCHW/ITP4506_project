@@ -61,7 +61,12 @@
 
         var newPassword1 = $("#newPassword1").val();
         var newPassword2 = $("#newPassword2").val();
-        if(newPassword1 == "" || newPassword2 == "" || $("#oldPassword").val() =="" ){
+        if(newPassword1 == "" && newPassword2 == "" && $("#oldPassword").val() == pwd){
+          alert("Changing information successful");
+          $("#newPassword1").val(pwd);
+          $("form[name='teacherEdit']").submit();
+        }
+        else if(newPassword1 == "" || newPassword2 == "" || $("#oldPassword").val() =="" ){
           alert("Please fill in all input box!");
         }
         else if(newPassword1 != newPassword2){

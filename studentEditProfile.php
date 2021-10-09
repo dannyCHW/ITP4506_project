@@ -12,7 +12,6 @@ $stuInfo = $_POST['stuInfo'];
   $_SESSION['studentInfo'] = $stuInfo;
 
   echo "<script type='text/javascript'>
-  alert('Your password has been changed.');
   window.location.href = 'studentProfileHTML.php';
   </script>";
 

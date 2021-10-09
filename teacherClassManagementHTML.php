@@ -15,24 +15,17 @@
 
         var varClassList = "<?php
         			require_once('connectDB.php');
-        			$sql = "SELECT * FROM class where teacherID =  '$teacherID'";
+        			$sql = "SELECT * FROM `class` ORDER BY `teacherID` DESC";
         		 	$rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
-        			$rc = mysqli_fetch_assoc($rs);
-        			echo"<thead>
-        							<tr>
-        								<th>Bill NO.</th><th>Sender's Email</th><th>Receiver Name</th><th>Receiver Phone</th><th>Receiver Address</th><th>Location ID</th>
-        							</tr>
-        					<tbody>";
+              echo mysqli_num_rows($rs);
         			while($rc = mysqli_fetch_array($rs)){
-        				if($rc['staffID']=== NULL){
-        				printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",$rc['airWaybillNo'],$rc['customerEmail'],$rc['receiverName'],$rc['receiverPhoneNumber'],$rc['receiverAddress'],$rc['locationID']);
-        				}
-        			}
-        		echo '</tbody></thead>';
+        				echo"<tr><td id='getID'>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";
+            	}
         		mysqli_free_result($rs);
         		mysqli_close($conn);
         	?>";
 
+          $('#classList').append(varClassList);
 
         $("table.classTable tr").click(function(){
           $(".divTable").hide();
@@ -69,24 +62,23 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <div class="canvas">
-    <div class="head" style="height:100px;">
+    <div class="head" style="height:80px;">
       <h3 id="topic"> View Class </h3>
     </div>
     <div class="divTable">
       <table class="classTable" id="classList">
-        <tr class="firstRow"><th>Class name</th><th>Year</th><th>Member</th></tr>
-        <tr><td>2A</td><td>2021</td><td>32</td></tr>
+        <tr class="firstRow"><th>Class ID</th><th>Class code</th><th>Year</th><th>Class Info</th></tr>
       </table>
     </div>
     <div class="divStudentList" hidden>
-      <button id="backBtn">Back To Class List</button>
+      <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
       <table class="studebtTable">
         <tr class="firstRow"><th>Student Name</th><th>Class</th><th>Phone</th></tr>
         <tr><td>Wong King Chun</td><td>2A</td><td>33331111</td></tr>
       </table>
     </div>
     <div class="divEditStudent" hidden>
-        <button id="backStudentListBtn">Back To Class List</button>
+        <button id="backStudentListBtn" style="height:40px;padding:10px;">Back To Class List</button>
         <div action="" class="proBody">
           <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
           <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
