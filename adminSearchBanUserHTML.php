@@ -29,33 +29,59 @@
 
           var content = "";
           var user = "";
-          var id = 0;
 
           if (v == "admin") {
 
             user = "admin";
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th><th></th></tr></thead><tbody id='TBbody'>";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th><th>Detail</th><th>Activation</th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td id='theid'>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td><td><button class='detail'>Detail</button></td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td><td>" +
+                "<button class='detail'>Detail</button></td><td>";
+
+              if (myObjarr[i].adminActivation == 0) {
+                content += "<p style='color:green'><b>Currently enabled </b> <button class='disAble'>Disable</button></p>";
+              } else {
+                content += "<p style='color:red'><b>Currently disabled </b> <button class='enAble'>Enable</button></p>";
+              }
+
+              content += "</td></tr>";
             }
 
           } else if (v == "teacher") {
 
             user = "teacher";
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th><th></th></tr></thead><tbody id='TBbody'>";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th><th>Detail</th><th>Activation</th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td id='theid'>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td><td>" +
+                "<button class='detail'>Detail</button></td><td>";
+
+              if (myObjarr[i].teacherActivation == 0) {
+                content += "<p style='color:green'><b>Currently enabled </b> <button class='disAble'>Disable</button></p>";
+              } else {
+                content += "<p style='color:red'><b>Currently disabled </b> <button class='enAble'>Enable</button></p>";
+              }
+
+              content += "</td></tr>";
             }
 
           } else {
 
             user = "student";
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th><th></th></tr></thead><tbody id='TBbody'>";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th><th>Detail</th><th>Activation</th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td id='theid'>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
+              content += "<tr><td id='theid'>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td><td>" +
+                "<button class='detail'>Detail</button></td><td>";
+
+              if (myObjarr[i].studentActivation == 0) {
+                content += "<p style='color:green'><b>Currently enabled </b> <button class='disAble'>Disable</button></p>";
+              } else {
+                content += "<p style='color:red'><b>Currently disabled </b> <button class='enAble'>Enable</button></p>";
+              }
+
+              content += "</td></tr>";
             }
 
           }
@@ -119,7 +145,7 @@
               "<p>adminName : " + myObjarr.adminName + "</p>" +
               "<p>adminUserName : " + myObjarr.adminUsername + "</p>" +
               "<p>adminPassWord : " + myObjarr.adminPassword + "</p>" +
-              "<h3>This window will self-close in 3 seconds.</h3>");
+              "<h3>This window will self-close in 5 seconds.</h3>");
           } else if (useris == 'teacher') {
             var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
             var $w = $(w.document.body);
@@ -128,7 +154,7 @@
               "<p>teacherUserName : " + myObjarr.teacherUsername + "</p>" +
               "<p>teacherPassWord : " + myObjarr.teacherPassword + "</p>" +
               "<p>teacherInfo : " + myObjarr.teacherInfo + "</p>" +
-              "<h3>This window will self-close in 3 seconds.</h3>");
+              "<h3>This window will self-close in 5 seconds.</h3>");
           } else if (useris == 'student') {
             var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
             var $w = $(w.document.body);
@@ -137,14 +163,14 @@
               "<p>studentUserName : " + myObjarr.studentUsername + "</p>" +
               "<p>studentPassWord : " + myObjarr.studentPassword + "</p>" +
               "<p>studentInfo : " + myObjarr.studentInfo + "</p>" +
-              "<h3>This window will self-close in 3 seconds.</h3>");
+              "<h3>This window will self-close in 5 seconds.</h3>");
           }
 
           function sleep(time) {
             return new Promise((resolve) => setTimeout(resolve, time));
           }
 
-          sleep(3000).then(() => {
+          sleep(5000).then(() => {
             w.close();
           })
 
@@ -152,6 +178,55 @@
       });
 
 
+    });
+
+    $(document).on('click', '.disAble', function() {
+      var disid = $(this).parent().parent().siblings('#theid').text();
+      var duseris = $('#savedUser').text();
+      //alert(disid);
+
+      var passDis = {
+        users: duseris,
+        userID: disid,
+        able: 1
+      };
+
+      $.ajax({
+        type: "POST",
+        url: 'adminSearchUserActivation.php',
+        data: passDis,
+        datatype: 'text',
+        cache: false,
+        success: function(data) {
+          alert(data);
+          location.reload();
+        }
+      });
+
+    });
+
+    $(document).on('click', '.enAble', function() {
+      var enid = $(this).parent().parent().siblings('#theid').text();
+      var euseris = $('#savedUser').text();
+      //alert(enid);
+
+      var passDis = {
+        users: euseris,
+        userID: enid,
+        able: 0
+      };
+
+      $.ajax({
+        type: "POST",
+        url: 'adminSearchUserActivation.php',
+        data: passDis,
+        datatype: 'text',
+        cache: false,
+        success: function(data) {
+          alert(data);
+          location.reload();
+        }
+      });
     });
   </script>
 </head>
