@@ -1,0 +1,127 @@
+.search {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    background: #f1f1f1;
+    border-radius: 10px;
+    width: 30%;
+  }
+
+  /* -------------------------------- */
+
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px;
+  }
+
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  /* ------------------------------- */
+
+
+  .btnSBUAdmin {
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+
+  .btnSBUAdmin {
+    color: black;
+    border: 2px solid #4CAF50;
+  }
+
+  .btnSBUAdmin:hover {
+    background-color: #4CAF50;
+    color: #e8edf2;
+  }
+
+
+  /* ----------------------- */
+
+  .btnSBUTeacher {
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+
+  .btnSBUTeacher {
+
+    color: black;
+    border: 2px solid #483cb4;
+  }
+
+  .btnSBUTeacher:hover {
+    background-color: #483cb4;
+    color: #e8edf2;
+  }
+
+  /* --------------- */
+
+  .btnSBUStudent {
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+
+  .btnSBUStudent {
+
+    color: black;
+    border: 2px solid #e07722;
+  }
+
+  .btnSBUStudent:hover {
+    background-color: #e07722;
+    color: #e8edf2;
+  }

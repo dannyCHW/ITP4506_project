@@ -2,142 +2,11 @@
 <html>
 
 <head>
-  <style>
-    .search {
-      padding: 10px;
-      font-size: 17px;
-      border: 1px solid grey;
-      background: #f1f1f1;
-      border-radius: 10px;
-      width: 30%;
-    }
-
-    /* -------------------------------- */
-
-    .styled-table {
-      border-collapse: collapse;
-      margin: 25px 0;
-      font-size: 0.9em;
-      font-family: sans-serif;
-      width: 50%;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .styled-table thead tr {
-      background-color: #009879;
-      color: #ffffff;
-      text-align: left;
-    }
-
-    .styled-table th,
-    .styled-table td {
-      padding: 12px 15px;
-    }
-
-    .styled-table tbody tr {
-      border-bottom: 1px solid #dddddd;
-    }
-
-    .styled-table tbody tr:nth-of-type(even) {
-      background-color: #f3f3f3;
-    }
-
-    .styled-table tbody tr:last-of-type {
-      border-bottom: 2px solid #009879;
-    }
-
-    /* ------------------------------- */
-
-
-    .btnSBUAdmin {
-      border: none;
-      color: #e8edf2;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      width: 150px;
-      border-radius: 5px;
-    }
-
-
-    .btnSBUAdmin {
-      color: black;
-      border: 2px solid #4CAF50;
-    }
-
-    .btnSBUAdmin:hover {
-      background-color: #4CAF50;
-      color: #e8edf2;
-    }
-
-
-    /* ----------------------- */
-
-    .btnSBUTeacher {
-      border: none;
-      color: #e8edf2;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      width: 150px;
-      border-radius: 5px;
-    }
-
-
-    .btnSBUTeacher {
-
-      color: black;
-      border: 2px solid #483cb4;
-    }
-
-    .btnSBUTeacher:hover {
-      background-color: #483cb4;
-      color: #e8edf2;
-    }
-
-    /* --------------- */
-
-    .btnSBUStudent {
-      border: none;
-      color: #e8edf2;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      width: 150px;
-      border-radius: 5px;
-    }
-
-
-    .btnSBUStudent {
-
-      color: black;
-      border: 2px solid #e07722;
-    }
-
-    .btnSBUStudent:hover {
-      background-color: #e07722;
-      color: #e8edf2;
-    }
-  </style>
 
   <?php include 'adminCheckSession.php'; ?>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="adminSearchBanUser.css">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
-  <!-- <link rel="stylesheet" type="text/css" href="adminCss/adminSearchBanUser.css"> -->
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" language="javascript">
     function goPHP(v) {
@@ -158,50 +27,45 @@
           const myObjarr = JSON.parse(myJSON);
           //alert(myObjarr[0].adminID);
 
+          var content = "";
+          var user = "";
+
           if (v == "admin") {
 
-            var content = "";
-
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th></tr></thead><tbody id='TBbody'>";
+            user = "admin";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>adminID</th><th>adminName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td></tr>";
+              content += "<tr><td>" + myObjarr[i].adminID + "</td><td>" + myObjarr[i].adminName + "</td><td><button class='detail'>Detail</button></td></tr>";
             }
-
-            content += "</tbody></table>";
-
-            $("table").replaceWith(content);
 
           } else if (v == "teacher") {
 
-            var content = "";
-
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th></tr></thead><tbody id='TBbody'>";
+            user = "teacher";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>teacherID</th><th>teacherName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td></tr>";
+              content += "<tr><td>" + myObjarr[i].teacherID + "</td><td>" + myObjarr[i].teacherName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
             }
-
-            content += "</tbody></table>";
-
-            $("table").replaceWith(content);
 
           } else {
 
-            var content = "";
-
-            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th></tr></thead><tbody id='TBbody'>";
+            user = "student";
+            content += "<table class='styled-table'><thead id='TBtitle'><tr><th>studentID</th><th>studentName</th><th></th></tr></thead><tbody id='TBbody'>";
 
             for (let i in myObjarr) {
-              content += "<tr><td>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td></tr>";
+              content += "<tr><td>" + myObjarr[i].studentID + "</td><td>" + myObjarr[i].studentName + "</td><td>" + "<button class='detail'>Detail</button>" + "</td></tr>";
             }
-
-            content += "</tbody></table>";
-
-            $("table").replaceWith(content);
 
           }
 
+          content += "</tbody></table>";
+
+          $("table").replaceWith(content);
+          $("#savedUser").text(user);
+
+          user = "";
+          content = "";
         }
       });
     }
@@ -220,10 +84,61 @@
         goPHP("student");
       });
 
-      $(".search").on("keyup", function(){
+      $(".search").on("keyup", function() {
         var word = $(this).val();
         $("tr:gt(0)").hide().filter(':contains("' + word + '")').show();
       });
+
+    });
+
+    $(document).on('click', '.detail', function() {
+      var detaillValID = $(this).parent().parent().children(':first-child').text();
+      var detaillValUname = $(this).parent().parent().children(':nth-child(2)').text();
+
+      var useris = $('#savedUser').text();
+
+      //alert(detaillVal);
+      //alert(useris);
+
+      var asd2 = {
+        users: useris,
+        userName: detaillValUname
+      };
+
+      $.ajax({
+        type: "POST",
+        url: 'adminSearchUserDetail.php',
+        data: asd2,
+        datatype: 'json',
+        cache: false,
+        success: function(data) {
+
+          const myJSON = data;
+          //alert(data);  
+          const myObjarr = JSON.parse(myJSON);
+          //alert(myObjarr);
+          alert(myObjarr.adminID);
+
+
+          var w = window.open("", "popupWindow", "width=500, height=300, scrollbars=yes");
+          var $w = $(w.document.body);
+          $w.html("<p>adminID : " + myObjarr.adminID + "</p>" +
+            "<p>adminName : " + myObjarr.adminName + "</p>" +
+            "<p>adminUserName : " + myObjarr.adminUsername + "</p>" +
+            "<p>adminPassWord : " + myObjarr.adminPassword + "</p>" +
+            "<h3>This window will self-close in 3 seconds.</h3>");
+
+          function sleep(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+          }
+
+          sleep(3000).then(() => {
+            w.close();
+          })
+
+        }
+      });
+
 
     });
   </script>
@@ -233,13 +148,11 @@
   <?php include 'adminMenuBar.html'; ?>
 
   <br />
-  <!-- <div class="sb"><input type="text" class="search" placeholder="Search.." name="search"></div> -->
   <center>
 
     <input type="text" class="search" placeholder="Search.." name="search">
 
     <br />
-    <div></div>
 
     <br />
     <button class="btnSBUAdmin">Admin</button>
@@ -247,7 +160,7 @@
     <button class="btnSBUStudent">Student</button>
 
     <br />
-    <div></div>
+    <div id="savedUser" hidden></div>
     <table class="styled-table">
       <thead id="TBtitle">
         <tr>
@@ -267,46 +180,6 @@
 
   </center>
 
-  <!-- <div class="canvas">
-      <div class="topic">
-        <h3>Search User</h3>
-        <div id="searchbox">
-          <input class="search-txt" placeholder="Type to search" />
-        </div>
-      </div>
-
-     <div class="search">
-        <div class="search_detail">
-          <table class="search_table">
-            <tr>
-              <th>Name:</th>
-              <th>Position:</th>
-              <th>Class:</th>
-            </tr>
-            <tr>
-              <th>Wong King Chun</th>
-              <th>Student</th>
-              <th>2A</th>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="information">
-        <div action="" class="proBody">
-          <h2>Information</h2>
-          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly /></p>
-          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly /></p>
-          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly /></p>
-          <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly /></p>
-          <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly /></p>
-          <p>Repeated: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly /></p>
-          <button id="banBtn" class="buttonForm">Ban</button>
-          <button id="activeBtn" class="buttonForm" hidden>Save</button>
-        </div>
-      </div>
-
-    </div> -->
 
 </body>
 
