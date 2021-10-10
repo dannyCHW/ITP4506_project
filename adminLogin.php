@@ -6,7 +6,7 @@ if (isset($_POST['adminLogin'])) {
     $username = $_POST['username'];
     $pwd = $_POST['password'];
 
-    $sql = "SELECT adminUsername, adminPassword FROM admin WHERE adminUsername='$username'";
+    $sql = "SELECT adminUsername, adminPassword, adminActivation FROM admin WHERE adminUsername='$username'";
     $rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     if (mysqli_num_rows($rs) <= 0) {
 
@@ -23,19 +23,27 @@ if (isset($_POST['adminLogin'])) {
             alert('Wrong username or password');
             window.location.href = 'adminLogin.php';
             </script>";
-
         } else {
 
-            session_start();
+            if ($rc['adminActivation'] == 0) {
 
-            $_SESSION['adminUsername'] = $username;
+                session_start();
 
-            echo "<script type='text/javascript'>
-            window.location.href = 'adminLobbyHTML.php';
-            </script>";
+                $_SESSION['adminUsername'] = $username;
+
+                echo "<script type='text/javascript'>
+                    window.location.href = 'adminLobbyHTML.php';
+                    </script>";
+
+            } else {
+                echo "<script type='text/javascript'>
+                    alert('This account have been disable.');
+                    window.location.href = 'adminLogin.html';
+                    </script>";
+            }
         }
+
     }
-    
 } else {
 
     echo "<script type='text/javascript'>
@@ -45,7 +53,5 @@ if (isset($_POST['adminLogin'])) {
 
 echo "<script type='text/javascript'>
             alert('Something Wrong');
+            window.location.href = 'adminLogin.html';
             </script>";
-
-
-?>

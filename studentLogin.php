@@ -27,17 +27,27 @@ if(isset($_POST['studentLogin'])){
 
 
         } else {
-          session_start();
 
-            $_SESSION['studentUsername'] = $username;
-            $_SESSION['studentID'] = $rc['studentID'];
-            $_SESSION['studentName'] = $rc['studentName'];
-            $_SESSION['studentPassword'] = $pwd;
-            $_SESSION['studentInfo'] = $rc['studentInfo'];
+            if ($rc['studentActivation'] == 0){
+                
+                session_start();
 
-            echo "<script type='text/javascript'>
-            window.location.href = 'studentLobbyHTML.php';
-            </script>";
+                $_SESSION['studentUsername'] = $username;
+                $_SESSION['studentID'] = $rc['studentID'];
+                $_SESSION['studentName'] = $rc['studentName'];
+                $_SESSION['studentPassword'] = $pwd;
+                $_SESSION['studentInfo'] = $rc['studentInfo'];
+
+                echo "<script type='text/javascript'>
+                window.location.href = 'studentLobbyHTML.php';
+                </script>";
+            } else {
+                echo "<script type='text/javascript'>
+                alert('This account have been disable');
+                window.location.href = 'studentLogin.html';
+                </script>";
+            }
+            
 
         }
 
@@ -50,4 +60,3 @@ if(isset($_POST['studentLogin'])){
             </script>";
 
 }
-?>

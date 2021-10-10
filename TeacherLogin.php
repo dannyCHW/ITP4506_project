@@ -28,17 +28,26 @@ if(isset($_POST['teacherLogin'])){
 
         } else {
 
+            if($rc['teacherActivation'] == 0){
+            
             session_start();
 
             $_SESSION['teacherUsername'] = $username;
-            $_SESSION['teacherName'] = $rc['teacherName'];;
-            $_SESSION['teacherID'] = $rc['teacherID'];;
+            $_SESSION['teacherName'] = $rc['teacherName'];
+            $_SESSION['teacherID'] = $rc['teacherID'];
             $_SESSION['password'] = $pwd;
-            $_SESSION['teacherInfo'] = $rc['teacherInfo'];;
+            $_SESSION['teacherInfo'] = $rc['teacherInfo'];
 
             echo "<script type='text/javascript'>
             window.location.href = 'teacherLobbyHTML.php';
             </script>";
+
+            } else {
+                echo "<script type='text/javascript'>
+                alert('This account have been disable');
+                window.location.href = 'TeacherLogin.html';
+                </script>";
+            }
 
         }
 
@@ -51,4 +60,6 @@ if(isset($_POST['teacherLogin'])){
             </script>";
 
 }
+
+
 ?>
