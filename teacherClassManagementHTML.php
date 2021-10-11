@@ -15,43 +15,19 @@
 
         var varClassList = "<?php
         			require_once('connectDB.php');
-        			$sql = "SELECT * FROM `class` ORDER BY `teacherID` DESC";
+        			$sql = "SELECT * FROM class ";
         		 	$rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
-              echo mysqli_num_rows($rs);
         			while($rc = mysqli_fetch_array($rs)){
-        				echo"<tr><td id='getID'>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";
+        				echo"<tr><td>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";
             	}
         		mysqli_free_result($rs);
-        		mysqli_close($conn);
         	?>";
-
           $('#classList').append(varClassList);
 
         $("table.classTable tr").click(function(){
-          $(".divTable").hide();
-          $(".divStudentList").show();
-          $("#topic").text("Student List");
-        });
-        $("#backBtn").click(function(){
-          $(".divStudentList").hide();
-          $(".divTable").show();
-          $("#topic").text("View Class");
-        });
-        $("table.studebtTable tr").click(function(){
-          $(".divStudentList").hide();
-          $(".divEditStudent").show();
-          $("#topic").text("Edit Student Profile");
-        });
-        $("#backStudentListBtn").click(function(){
-          $(".divEditStudent").hide();
-          $('.form_input').val("");
-          $('.form_input').prop('readonly', true);
-          $(".divStudentList").show();
-        });
-        $("#editBtn").click(function(){
-            $('.form_input').prop('readonly', false);
-            $(this).hide();
-            $("#saveBtn").show();
+          var selectClassID = $(this).find('td:first').text();
+          $("#searchStu").val(selectClassID);
+          $("form[name='teacherSelectClass']").submit();
         });
       });
     </script>
@@ -70,26 +46,9 @@
         <tr class="firstRow"><th>Class ID</th><th>Class code</th><th>Year</th><th>Class Info</th></tr>
       </table>
     </div>
-    <div class="divStudentList" hidden>
-      <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
-      <table class="studebtTable">
-        <tr class="firstRow"><th>Student Name</th><th>Class</th><th>Phone</th></tr>
-        <tr><td>Wong King Chun</td><td>2A</td><td>33331111</td></tr>
-      </table>
-    </div>
-    <div class="divEditStudent" hidden>
-        <button id="backStudentListBtn" style="height:40px;padding:10px;">Back To Class List</button>
-        <div action="" class="proBody">
-          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
-          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
-          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
-          <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
-          <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
-          <p>Repeated: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
-          <button id="editBtn" class="buttonForm">Edit</button>
-          <button id="saveBtn" class="buttonForm" hidden>Save</button>
-        </div>
-    </div>
+    <form id="saveData" method="POST" action="teacherSelectClass.php" name="teacherSelectClass"hidden>
+      <input type="text" name="searchStu" id="searchStu"/>
+    </form>
   </div>
 </body>
 </html>
