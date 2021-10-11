@@ -65,6 +65,3 @@ if ($is == "admin"){
         $myJson = json_encode($arr);
         echo $myJson;
 }
-    
-
-?>

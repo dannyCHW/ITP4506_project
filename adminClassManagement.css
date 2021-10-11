@@ -1,0 +1,121 @@
+.ustyled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .ustyled-table thead tr {
+    background-color: #fac000;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .ustyled-table th,
+  .ustyled-table td {
+    padding: 12px 15px;
+  }
+
+  .ustyled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .ustyled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  .ustyled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #fac000;
+  }
+
+
+/* ------ */
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px;
+  }
+
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+
+/* ------------ */
+
+.btnUnV {
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+
+  .btnUnV {
+    color: black;
+    border: 2px solid #fac000;
+  }
+
+  .btnUnV:hover {
+    background-color: #fac000;
+    color: #e8edf2;
+  }
+
+  /*  */
+
+  .btnVd {
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+
+  .btnVd {
+    color: black;
+    border: 2px solid #0857a1;
+  }
+
+  .btnVd:hover {
+    background-color: #0857a1;
+    color: #e8edf2;
+  }
