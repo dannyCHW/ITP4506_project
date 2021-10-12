@@ -64,10 +64,10 @@
 
         /* */
 
-        $("table.classInfoForm tr").click(function(){
+        $("#studentShowList tr").click(function(){
           var selectStuID = $(this).find('td:first').text();
-          $("#searchStu").val(selectClassID);
-          $("form[name='teacherSelectClass']").submit();
+          $("#searchStudentID").val(selectStuID);
+          $("form[name='teacherSelectStudent']").submit();
         });
 
       });
@@ -85,7 +85,7 @@
     <center class="divStudentList"  >
       <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
 
-      <table class="studebtTable" id="studentShowList">
+      <table class="studebtTable" id="studentShowList" name="studentShowList">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
       </table>
 
@@ -97,8 +97,8 @@
 
 
     </center>
-    <form id="saveData" method="POST" action="teacherSelectStudent.php" name="teacherSelectStudent"hidden>
-      <input type="text" name="searchStuInfo" id="searchStuInfo"/>
+    <form id="teacherSelectStudent" method="POST" action="teacherSelectStudent.php" name="teacherSelectStudent"hidden>
+      <input type="text" name="searchStudentID" id="searchStudentID"/>
     </form>
   </div>
 </body>

@@ -10,48 +10,17 @@
     <script type="text/javascript"src="jslib/jquery-1.11.1.js"></script>
     <script type="text/javascript" language="javascript">
       $(document).ready(function(){
+        var studentID =  "<?php echo $_SESSION['selectStudentID'] ?>";
+        var studentUserName =  "<?php echo $_SESSION['selectedStudentUserName'] ?>";
+        var studentName =  "<?php echo $_SESSION['selectedStudentName'] ?>";
+        var studentInfo =  "<?php echo $_SESSION['selectedStudentInfo'] ?>";
+        var studentPwd =  "<?php echo $_SESSION['selectedStudentPwd'] ?>";
 
-        var teacherID =  "<?php echo $_SESSION['teacherID'] ?>";
-
-        var varClassList = "<?php
-        			require_once('connectDB.php');
-        			$sql = "SELECT * FROM class ";
-        		 	$rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
-        			while($rc = mysqli_fetch_array($rs)){
-        				echo"<tr><td>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";
-            	}
-        		mysqli_free_result($rs);
-        	?>";
-
-          $('#classList').append(varClassList);
-
-        $("table.classTable tr").click(function(){
-          var selectClassID = $(this).find('td:first').text();
-          $("#searchStu").val(selectClassID);
-          $("form[name='teacherSelectClass']").submit();
-          var varStuList =  "<?php echo $_SESSION['searchByClassID'] ?>";
-        });
-        $("#backBtn").click(function(){
-          $(".divStudentList").hide();
-          $(".divTable").show();
-          $("#topic").text("View Class");
-        });
-        $("table.studebtTable tr").click(function(){
-          $(".divStudentList").hide();
-          $(".divEditStudent").show();
-          $("#topic").text("Edit Student Profile");
-        });
-        $("#backStudentListBtn").click(function(){
-          $(".divEditStudent").hide();
-          $('.form_input').val("");
-          $('.form_input').prop('readonly', true);
-          $(".divStudentList").show();
-        });
-        $("#editBtn").click(function(){
-            $('.form_input').prop('readonly', false);
-            $(this).hide();
-            $("#saveBtn").show();
-        });
+          $("#stuID").val(studentID);
+          $("#stuUserName").val(studentUserName);
+          $("#stuName").val(studentName);
+          $("#stuInfo").val(studentInfo);
+          $("#stuPwd").val(studentPwd);
       });
     </script>
 </head>
@@ -66,14 +35,13 @@
     </div>
 
     <div class="divEditStudent">
-        <button id="backStudentListBtn" style="height:40px;padding:10px;">Back To Class List</button>
+        <button id="backStudentListBtn" style="height:40px;padding-bottom:5px;">Back To Class List</button>
         <div action="" class="proBody">
-          <p>Name: <input type="text" id="name" class="form_input" autocomplete="off" readonly/></p>
-          <p>Email: <input type="text" id="email" class="form_input" autocomplete="off" readonly/></p>
-          <p>Phone: <input type="text" id="phone" class="form_input" autocomplete="off" readonly/></p>
-          <p>Old Password: <input type="password" id="oldPassword" class="form_input" autocomplete="off" readonly/></p>
-          <p>New Password: <input type="password" id="newPassword1" class="form_input" autocomplete="off" readonly/></p>
-          <p>Repeated: <input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly/></p>
+          <p>Student ID: <input type="text" id="stuID" class="form_input" autocomplete="off" readonly/></p>
+          <p>Student User Name: <input type="text" id="stuUserName" class="form_input" autocomplete="off" readonly/></p>
+          <p>Student Name: <input type="text" id="stuName" class="form_input" autocomplete="off" readonly/></p>
+          <p>Student Information: <input type="text" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
+          <p>Password: <input type="text" id="stuPwd" class="form_input" autocomplete="off" readonly/></p>
           <button id="editBtn" class="buttonForm">Edit</button>
           <button id="saveBtn" class="buttonForm" hidden>Save</button>
         </div>
