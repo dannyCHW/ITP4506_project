@@ -39,6 +39,11 @@
           $('#editBtn').show();
           $("form[name='editForm']").submit();
         });
+        $("#removeBtn").click(function(){
+          if (confirm('Did you really want to remove this student form current clsaa?')) {
+            window.location.replace("removeStudentFromClass.php");
+          }
+        });
       });
     </script>
 </head>
@@ -62,13 +67,11 @@
             <p>Student Information: <input type="text" id="stuInfo" name="stuInfo" class="form_input" autocomplete="off" readonly/></p>
             <p>Password: <input type="text" id="stuPwd" name="stuPwd" class="form_input" autocomplete="off" readonly/></p>
             <button type="button" id="editBtn" class="buttonForm">Edit</button>
-            <button id="saveBtn" class="buttonForm" hidden>Save</button>
+            <button id="saveBtn" class="buttonForm" hidden>Save</button><br/><br/>
+            <button type ="button"id="removeBtn" class="buttonForm" style ="background-color:black;margin-right: 45%;">Remove This Student From Class</button>
           </div>
         </form>
     </div>
-    <form id="saveData" method="POST" action="teacherSelectClass.php" name="teacherSelectClass"hidden>
-      <input type="text" name="searchStu" id="searchStu"/>
-    </form>
   </div>
 </body>
 </html>
