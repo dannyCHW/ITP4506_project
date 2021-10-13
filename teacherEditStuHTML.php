@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+  <!<!DOCTYPE html>
 <html>
 <head>
     <?php include 'teacherCheckSession.php'; ?>
@@ -16,11 +16,18 @@
         var studentInfo =  "<?php echo $_SESSION['selectedStudentInfo'] ?>";
         var studentPwd =  "<?php echo $_SESSION['selectedStudentPwd'] ?>";
 
-          $("#stuID").val(studentID);
-          $("#stuUserName").val(studentUserName);
-          $("#stuName").val(studentName);
-          $("#stuInfo").val(studentInfo);
-          $("#stuPwd").val(studentPwd);
+        $("#stuID").val(studentID);
+        $("#stuUserName").val(studentUserName);
+        $("#stuName").val(studentName);
+        $("#stuInfo").val(studentInfo);
+        $("#stuPwd").val(studentPwd);
+
+        $("#editBtn").click(function(){
+          $(this).hide();
+          $('#saveBtn').show();
+          $('.form_input').prop('readonly', false);
+
+        });
       });
     </script>
 </head>
@@ -36,15 +43,17 @@
 
     <div class="divEditStudent">
         <button id="backStudentListBtn" style="height:40px;padding-bottom:5px;">Back To Class List</button>
-        <div action="" class="proBody">
-          <p>Student ID: <input type="text" id="stuID" class="form_input" autocomplete="off" readonly/></p>
-          <p>Student User Name: <input type="text" id="stuUserName" class="form_input" autocomplete="off" readonly/></p>
-          <p>Student Name: <input type="text" id="stuName" class="form_input" autocomplete="off" readonly/></p>
-          <p>Student Information: <input type="text" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
-          <p>Password: <input type="text" id="stuPwd" class="form_input" autocomplete="off" readonly/></p>
-          <button id="editBtn" class="buttonForm">Edit</button>
-          <button id="saveBtn" class="buttonForm" hidden>Save</button>
-        </div>
+        <form id="editForm" name="editForm" method="POST">
+          <div class="proBody">
+            <p>Student ID: <input type="text" id="stuID" class="form_input" autocomplete="off" readonly/></p>
+            <p>Student User Name: <input type="text" id="stuUserName" class="form_input" autocomplete="off" readonly/></p>
+            <p>Student Name: <input type="text" id="stuName" class="form_input" autocomplete="off" readonly/></p>
+            <p>Student Information: <input type="text" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
+            <p>Password: <input type="text" id="stuPwd" class="form_input" autocomplete="off" readonly/></p>
+            <button type="button" id="editBtn" class="buttonForm">Edit</button>
+            <button id="saveBtn" class="buttonForm" hidden>Save</button>
+          </div>
+        </form>
     </div>
     <form id="saveData" method="POST" action="teacherSelectClass.php" name="teacherSelectClass"hidden>
       <input type="text" name="searchStu" id="searchStu"/>

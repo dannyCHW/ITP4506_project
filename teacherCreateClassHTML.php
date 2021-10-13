@@ -67,10 +67,10 @@
 
   <div class="canvas_body">
     <form action="createClass.php" class="proBody" method="POST" name="createClassForm">
-      <p>Class Name: <input type="text" id="className" class="form_input" autocomplete="off" required/></p>
-      <p>Class Code: <input type="text" id="code" class="form_input" autocomplete="off" required/></p>
-      <p>Year: <input type="text" id="year" class="form_input" autocomplete="off" required/></p>
-      <p>Information: <input type="text" id="classInfo" class="form_input" placeholder="(Can Be Blank)" autocomplete="off" /></p>
+      <p>Class Name: <input type="text" id="className" name="className" class="form_input" autocomplete="off" required/></p>
+      <p>Class Code: <input type="text" id="code" name="code" class="form_input" autocomplete="off" required/></p>
+      <p>Year: <input type="text" id="year" name="year" class="form_input" autocomplete="off" required/></p>
+      <p>Information: <input type="text" id="classInfo" name="classInfo" class="form_input" placeholder="(Can Be Blank)" autocomplete="off" /></p>
 
       <button type="submit" id="submitBtn" class="button" >Submit</button>
     </form>

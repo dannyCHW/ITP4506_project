@@ -5,11 +5,12 @@ $className = $_POST['className'];
 $classCode = $_POST['code'];
 $year = $_POST['year'];
 $classInfo = $_POST['classInfo'];
+$time = date('Y-m-d');
 session_start();
 $teacherID = $_SESSION['teacherID'];
-/*  change to insert
-  $sql = "UPDATE teacher set teacherPassword = '$newPwd' , teacherInfo  = '$teacherInfo' where teacherUsername = '$username'";
-*/
+
+$sql = "INSERT INTO class  VALUES ('','$classInfo','$classCode','$year','$teacherID','inArchive','$time');";
+
 
   $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
   session_start();
