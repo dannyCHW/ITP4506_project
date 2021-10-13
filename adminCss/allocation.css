@@ -12,7 +12,6 @@
 .body{
   height: 700px;
   width: 100%;
-  background-color: pink;
 }
 .tableCss{
   width: 100%;
@@ -25,4 +24,14 @@
 h3{
   font-size: 30px;
   padding-top: 30px;
+}
+
+.tableCss th{
+  background-color: #108B28;
+  color: #fff;
+  height: 70px
+}
+.tableCss td{
+  font-size: 25px;
+  height: 55px;
 }
