@@ -26,6 +26,7 @@
     });
     $("#searchBtn").click(function(){
       if($("#year").is(':checked')) {
+        $("#attendaceForm").find("tr:gt(0)").remove();
         var attendaceList = "<?php
           require_once('connectDB.php');
           $studentID = $_SESSION['studentID'];
@@ -60,7 +61,18 @@
 
             $('#attendaceForm').append(attendaceList);
 
+          }else{
+              $("#attendaceForm").find("tr:gt(0)").remove();
+              $.ajax({
+                type: "POST",
+                url: 'getMonthAttendance.php',
+                data: {text:$('#monthSelect').val()},
+                success: function(data) {
+                  $('#attendaceForm').append(data);
+                }
+              });
           }
+
     });
   });
   </script>
@@ -74,7 +86,7 @@
         </div>
         <div class="body">
           <center class="selectDiv">
-            <p>Searching by : &nbsp;&nbsp;&nbsp;&nbsp;
+            <p id="text">Searching by : &nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" id="year" name="timeType" value="Year" checked>&nbsp; Year &nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" id="month" name="timeType" value="Month">&nbsp; Month
             </p>
