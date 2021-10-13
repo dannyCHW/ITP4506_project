@@ -1,0 +1,28 @@
+@import url('http://fonts.googleapics.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+.background{
+  height: 100%;
+  width: 100%;
+}
+.topicDiv{
+  height:100px;
+  width: 100%;
+  background-color: lightblue;
+}
+.body{
+  height: 700px;
+  width: 100%;
+  background-color: pink;
+}
+.tableCss{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 20px;
+  table-layout:fixed;
+}
+
+h3{
+  font-size: 30px;
+  padding-top: 30px;
+}
