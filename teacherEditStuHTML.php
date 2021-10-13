@@ -25,7 +25,6 @@
         $("#editBtn").click(function(){
           $(this).hide();
           $('#saveBtn').show();
-          $('#stuUserName').prop('readonly', false);
           $("#stuName").prop('readonly', false);
           $("#stuInfo").prop('readonly', false);
           $("#stuPwd").prop('readonly', false);
