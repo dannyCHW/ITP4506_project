@@ -13,7 +13,6 @@ $sql = "INSERT INTO class  VALUES ('','$classInfo','$classCode','$year','$teache
 
 
   $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
-  session_start();
 
   echo "<script type='text/javascript'>
   window.location.href = 'teacherCreateClassHTML.php';
