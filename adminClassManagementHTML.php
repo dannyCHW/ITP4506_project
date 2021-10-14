@@ -15,14 +15,9 @@
     <script type="text/javascript" language="javascript">
         function getClassFromPHP(receive) {
 
-            var passData = {
-                status: receive
-            };
-
             $.ajax({
                 type: "POST",
                 url: 'adminClassManagement.php',
-                data: passData,
                 datatype: 'json',
                 cache: false,
                 success: function(data) {
@@ -35,42 +30,15 @@
 
                     var content = "";
 
-                    if (isEmpty(myObjarr)) {
+                    content += "<table class='styled-table'><thead id='TBtitle'><tr>" +
+                        "<th> </th><th>classID</th><th>classCode</th><th>schoolYear</th><th>classInfo</th><th> </th>" +
+                        "</tr></thead><tbody id='TBbody'>";
 
-                        content += "<table class='ustyled-table'><thead id='TBtitle'><tr>" +
-                            "<th>There is not unverified class.</th>" +
-                            "</tr></thead><tbody id='TBbody'><tr><td></td></tr>";
-                            
-                    } else {
+                    for (let i in myObjarr) {
+                        content += "<tr><td><input type='checkbox' name='goRecord' value='" + myObjarr[i].classID + "'></td><td id='theid'>" + myObjarr[i].classID + "</td><td>" + myObjarr[i].classCode + "</td><td>" +
+                            myObjarr[i].schoolYear + "</td><td>" + myObjarr[i].classInfo + "</td><td>" + "<button id='edit'>Edit Info</button>";
 
-                        if (receive == 'nonVerify') {
-
-                            content += "<table class='ustyled-table'><thead id='TBtitle'><tr>" +
-                                "<th>classID</th><th>classCode</th><th>schoolYear</th><th>classInfo</th><th>verify</th>" +
-                                "</tr></thead><tbody id='TBbody'>";
-
-                            for (let i in myObjarr) {
-                                content += "<tr><td id='theid'>" + myObjarr[i].classID + "</td><td>" + myObjarr[i].classCode + "</td><td>" +
-                                    myObjarr[i].schoolYear + "</td><td>" + myObjarr[i].classInfo + "</td><td><button id='accept'>Accept</button>";
-
-                                content += "</td></tr>";
-                            }
-
-                        } else {
-
-                            content += "<table class='styled-table'><thead id='TBtitle'><tr>" +
-                                "<th>classID</th><th>classCode</th><th>schoolYear</th><th>classInfo</th>" +
-                                "</tr></thead><tbody id='TBbody'>";
-
-                            for (let i in myObjarr) {
-                                content += "<tr><td id='theid'>" + myObjarr[i].classID + "</td><td>" + myObjarr[i].classCode + "</td><td>" +
-                                    myObjarr[i].schoolYear + "</td><td>" + myObjarr[i].classInfo;
-
-                                content += "</td></tr>";
-                            }
-
-                        }
-
+                        content += "</td></tr>";
                     }
 
                     content += "</tbody></table>";
@@ -81,37 +49,95 @@
 
         }
 
-        $(document).ready(function() {
-
-            $(".btnUnV").click(function() {
-                getClassFromPHP('nonVerify');
-            });
-
-            $(".btnVd").click(function() {
-                getClassFromPHP('active');
-            });
-
-        });
-
-        $(document).on('click', '#accept', function() {
-            var classValID = $(this).parent().siblings("#theid").text();
-
-            var passData = {
-                classID: classValID
-            };
-
-            $.ajax({
-                type: "POST",
-                url: 'adminClassManagementVerify.php',
-                data: passData,
-                datatype: 'text',
-                cache: false,
-                success: function(data) {
-                    alert(data);
-                    location.reload();
+        function getChecked() {
+            var checkBoxs = new Array();
+            $('input:checkbox[name=goRecord]').each(function() {
+                if ($(this).is(':checked')) {
+                    //alert($(this).val());
+                    checkBoxs.push($(this).val());
                 }
             });
+            return checkBoxs;
+        }
+
+        $(document).ready(function() {
+
+            // $(".btnUnV").click(function() {
+            //     getClassFromPHP('nonVerify');
+            // });
+
+            // $(".btnVd").click(function() {
+            //     getClassFromPHP('active');
+            // });
+
+            getClassFromPHP('active');
+
+            $("#aci").click(function() {
+                var checkBoxs = getChecked();
+
+                if (checkBoxs.length == 0) {
+
+                    alert("You did not select any record.");
+
+                } else {
+
+                    if (confirm('Are you sure to save these records into archive? This action cannot be reverse!')) {
+                        // Save it!
+                        //alert('Record was saved to the database.');
+                        //checkBoxs.forEach(element => alert(element));
+
+                        var jsonCheckeds = {
+                            checkBoxs: JSON.stringify(checkBoxs)
+                        } 
+
+                        $.ajax({
+                            type: "POST",
+                            url: 'adminSaveToArchive.php',
+                            data: jsonCheckeds,
+                            datatype: 'text',
+                            cache: false,
+                            success: function(data) {
+
+                                //const myJSON = data;
+                                //alert(myJSON);
+                                //const myObjarr = JSON.parse(myJSON);
+                                //alert(isEmpty(myObjarr));
+                                //alert(myObjarr[0].adminID);
+
+                                alert(data);
+                            }
+                        });
+
+                    } else {
+                        // Do nothing!
+                        alert('Record was not saved to the database.');
+                    }
+
+                }
+
+            });
+
         });
+
+        // $(document).on('click', '#accept', function() {
+        //     var classValID = $(this).parent().siblings("#theid").text();
+
+        //     var passData = {
+        //         classID: classValID
+        //     };
+
+        //     $.ajax({
+        //         type: "POST",
+        //         url: 'adminClassManagementVerify.php',
+        //         data: passData,
+        //         datatype: 'text',
+        //         cache: false,
+        //         success: function(data) {
+        //             alert(data);
+        //             location.reload();
+        //         }
+        //     });
+        // });
 
         function isEmpty(obj) {
             return Object.keys(obj).length === 0;
@@ -122,13 +148,14 @@
 </head>
 
 <body>
+    <link rel="stylesheet" type="text/css" href="adminClassManagement.css">
     <?php
     include 'adminMenuBar.html';
     ?>
     <center>
         <br />
-        <button class="btnUnV">Un Verify</button>
-        <button class="btnVd">Existing</button>
+        <!-- <button class="btnUnV">Archive</button> -->
+        <!-- <button class="btnVd">Existing</button> -->
         <table class="styled-table">
             <thead id="TBtitle">
                 <tr>
@@ -144,7 +171,11 @@
 
             </tbody>
         </table>
+        <br />
+        <button id="aci">Save To Archive</button>
     </center>
+
+
 </body>
 
 </html>
