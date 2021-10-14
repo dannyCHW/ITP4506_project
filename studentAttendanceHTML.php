@@ -3,7 +3,7 @@
 <head>
 
 
-  <title>Allication Record</title>
+  <title>Check Attendance</title>
   <?php include 'studentCheckSession.php'; ?>
 
   <meta name="viewport" content="width=device-width,initial-scale=1.0">

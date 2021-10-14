@@ -2,6 +2,7 @@
 <html>
 <head>
   <?php include 'teacherCheckSession.php'; ?>
+  <title>Teacher lobby</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
 
@@ -9,7 +10,7 @@
     <script type="text/javascript"src="jslib/jquery-1.11.1.js"></script>
     <script type="text/javascript" language="javascript">
       $(document).ready(function(){
-        
+
       });
     </script>
 </head>

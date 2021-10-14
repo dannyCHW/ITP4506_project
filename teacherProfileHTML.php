@@ -4,7 +4,7 @@
 <head>
 
 
-  <title>CreateAcc</title>
+    <title>Teacher Profile</title>
   <?php include 'teacherCheckSession.php'; ?>
 
   <meta name="viewport" content="width=device-width,initial-scale=1.0">

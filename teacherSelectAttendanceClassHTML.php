@@ -1,6 +1,7 @@
 <html>
 <head>
   <?php include 'teacherCheckSession.php'; ?>
+    <title>Attendance Student List</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
   <link rel="stylesheet" type="text/css" href="adminCss/teacherClass.css">
