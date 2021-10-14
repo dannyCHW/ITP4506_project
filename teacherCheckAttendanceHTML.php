@@ -2,6 +2,7 @@
 <html>
 <head>
   <?php include 'teacherCheckSession.php'; ?>
+    <title>Attendance Class List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
     <link rel="stylesheet" type="text/css" href="adminCss/teacherClass.css">
@@ -24,7 +25,7 @@
           ?>";
           $('#classList').append(varClassList);
 
-        $("table.classTable tr").click(function(){
+        $("table.classTable tr:not(:first-child)").click(function(){
           var selectClassID = $(this).find('td:first').text();
           $("#searchClass").val(selectClassID);
           $("form[name='teacherSelectClass']").submit();

@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php include 'teacherCheckSession.php'; ?>
+      <title>View Class List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
     <link rel="stylesheet" type="text/css" href="adminCss/teacherClass.css">
@@ -24,7 +25,7 @@
         	?>";
           $('#classList').append(varClassList);
 
-        $("table.classTable tr").click(function(){
+        $("table.classTable tr:not(:first-child)").click(function(){
           var selectClassID = $(this).find('td:first').text();
           $("#searchStu").val(selectClassID);
           $("form[name='teacherSelectClass']").submit();
@@ -43,7 +44,7 @@
     </div>
     <div class="divTable">
       <table class="classTable" id="classList">
-        <tr class="firstRow"><th>Class ID</th><th>Class code</th><th>Year</th><th>Class Info</th></tr>
+        <tr class="firstRow" unselectable="on"><th>Class ID</th><th>Class code</th><th>Year</th><th>Class Info</th></tr>
       </table>
     </div>
     <form id="saveData" method="POST" action="teacherSelectClass.php" name="teacherSelectClass"hidden>

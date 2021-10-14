@@ -1,6 +1,7 @@
 
 <html>
 <head>
+    <title>Add Student Form</title>
     <?php include 'teacherCheckSession.php'; ?>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">

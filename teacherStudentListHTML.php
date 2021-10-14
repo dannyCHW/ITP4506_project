@@ -1,6 +1,7 @@
 
 <html>
 <head>
+    <title>Student List</title>
     <?php include 'teacherCheckSession.php'; ?>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
@@ -64,7 +65,7 @@
 
         /* */
 
-        $("#studentShowList tr").click(function(){
+        $("#studentShowList tr:not(:first-child)").click(function(){
           var selectStuID = $(this).find('td:first').text();
           $("#searchStudentID").val(selectStuID);
           $("form[name='teacherSelectStudent']").submit();
