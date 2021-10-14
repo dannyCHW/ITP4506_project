@@ -46,7 +46,7 @@
         /* menu open & close */
         var teacherID = "<?php echo $_SESSION['teacherID'] ?>";
         $("#submitBtn").click(function(){
-          alert("Your request has been submit, please waiting for verify.");
+          alert("Class created.");
             $("form[name='createClassForm']").submit();
         });
 

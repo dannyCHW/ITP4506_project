@@ -9,7 +9,7 @@ $time = date('Y-m-d');
 session_start();
 $teacherID = $_SESSION['teacherID'];
 
-$sql = "INSERT INTO class  VALUES ('','$classInfo','$classCode','$year','$teacherID','active','$time');";
+$sql = "INSERT INTO class  VALUES ('','$classInfo','$classCode','$year','$teacherID','$time');";
 
 
   $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
