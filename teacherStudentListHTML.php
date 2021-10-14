@@ -1,4 +1,4 @@
-
+  
 <html>
 <head>
     <?php include 'teacherCheckSession.php'; ?>

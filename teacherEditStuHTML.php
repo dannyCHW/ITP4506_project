@@ -39,7 +39,7 @@
           $("form[name='editForm']").submit();
         });
         $("#removeBtn").click(function(){
-          if (confirm('Did you really want to remove this student form current clsaa?')) {
+          if (confirm('Did you really want to remove this student form current class?')) {
             window.location.replace("removeStudentFromClass.php");
           }
         });

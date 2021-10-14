@@ -10,9 +10,7 @@
           $sql2 = "SELECT * FROM class where classID = '$classID'";
           $rs2 = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
           while($rc2 = mysqli_fetch_array($rs2)){
-            if($rc2['classStatus'] == "active"){
               $currentClassID = $rc2['classID'];
-            }
           }
       }
     $sql5 = "SELECT *  FROM attanence where MONTH(attanence_date) = '$selectedMonth' AND classID = '$currentClassID' AND studentID ='$studentID'";

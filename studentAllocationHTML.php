@@ -18,27 +18,39 @@
   <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
   <script type="text/javascript" language="javascript">
   $(document).ready(function(){
-    var allocaationRecord = "<?php
+    var allocationRecord = "<?php
           require_once('connectDB.php');
-          $selectClassID = $_SESSION['studentID'];
-          $sql = "SELECT * FROM allocation where studentID = '$selectClassID'";
+          $studentID = $_SESSION['studentID'];
+          $sql = "SELECT * FROM allocation where studentID = '$studentID' ORDER BY classID DESC";
           $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
           while($rc = mysqli_fetch_array($rs)){
               $classID = $rc['classID'];
-              $sql2 = "SELECT * FROM class where classID = '$classID' ORDER BY classID DESC";
+              $sql2 = "SELECT * FROM class where classID = '$classID' ";
               $rs2 = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
               while($rc2 = mysqli_fetch_array($rs2)){
                 $teacherID = $rc2['teacherID'];
                 $sql3 = "SELECT * FROM teacher where teacherID = '$teacherID'";
                 $rs3 = mysqli_query($conn, $sql3)or die(mysqli_error($conn));
                 while($rc3 = mysqli_fetch_array($rs3)){
-                  echo"<tr><td>".$rc['classID']."</td><td>".$rc2['classCode']."</td><td>".$rc2['schoolYear']."</td><td>".$rc3['teacherName']."</td><td>".$rc2['classStatus']."</td></tr>";
+                  echo"<tr><td>".$rc['classID']."</td><td>".$rc2['classCode']."</td><td>".$rc2['schoolYear']."</td><td>".$rc3['teacherName']."</td><td>"."Current Class"."</td></tr>";
               }
             }
+            /* search in recprd database*/
+            $sql4 = "SELECT * FROM classrecord where rclassID = '$classID' ";
+            $rs4 = mysqli_query($conn, $sql4)or die(mysqli_error($conn));
+            while($rc4 = mysqli_fetch_array($rs4)){
+              $teacherID = $rc4['rTeacherID'];
+              $sql5 = "SELECT * FROM teacher where teacherID = '$teacherID'";
+              $rs5 = mysqli_query($conn, $sql5)or die(mysqli_error($conn));
+              while($rc3 = mysqli_fetch_array($rs3)){
+                echo"<tr><td>".$rc['classID']."</td><td>".$rc4['rClassCode']."</td><td>".$rc2['rSchoolYear']."</td><td>".$rc5['teacherName']."</td><td>"."Previous Class"."</td></tr>";
+              }
+            }
+            /* stop in here */
           }
       ?>";
 
-      $('#tableCss').append(allocaationRecord);
+      $('#tableCss').append(allocationRecord);
   });
   </script>
   </head>
