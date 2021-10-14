@@ -1,4 +1,3 @@
-
 <html>
 <head>
   <?php include 'teacherCheckSession.php'; ?>
@@ -11,31 +10,33 @@
 
 
   <script type="text/javascript">
-function exportToExcel(){
-  var downloadurl;
-  var dataFileType = 'application/vnd.ms-excel';
-  var tableSelect = document.getElementById('studentShowList');
-  var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
-  // Specify file name
-  filename = 'StudentDetails.xls';
-  // Create download link element
-  downloadurl = document.createElement("a");
-  document.body.appendChild(downloadurl);
-  if(navigator.msSaveOrOpenBlob){
-    var blob = new Blob(['\ufeff', tableHTMLData], {
-      type: dataFileType
-    });
-    navigator.msSaveOrOpenBlob( blob, filename);
-  }else{
-    // Create a link to the file
-    downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
-    // Setting the file name
-    downloadurl.download = filename;
-    //triggering the function
-    downloadurl.click();
-  }
-}
-</script>
+      function exportToExcel(){
+        document.getElementById("reportTable").hidden = false;
+      var downloadurl;
+      var dataFileType = 'application/vnd.ms-excel';
+      var tableSelect = document.getElementById('reportTable');
+      var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+      // Specify file name
+      filename = 'StudentDetails.xls';
+      // Create download link element
+      downloadurl = document.createElement("a");
+      document.body.appendChild(downloadurl);
+      if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTMLData], {
+          type: dataFileType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+      }else{
+        // Create a link to the file
+        downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
+        // Setting the file name
+        downloadurl.download = filename;
+        //triggering the function
+        downloadurl.click();
+      }
+      document.getElementById("reportTable").hidden = true;
+    }
+  </script>
 
 
   <script type="text/javascript" language="javascript">
@@ -64,7 +65,6 @@ function exportToExcel(){
                   }else{
                     $numerator+=0;
                   }
-
                 }
                 $rate = $denominator/$numerator * 100;
                 if($rate<70){
@@ -75,10 +75,26 @@ function exportToExcel(){
               }
           }
         mysqli_free_result($rs);
-
       ?>";
 
       $('#studentShowList').append(varStudentList);
+
+      var reportList = "<?php
+      require_once('connectDB.php');
+      $selectClassID = $_SESSION['rAttendanceClass'];
+      $sql6 = "SELECT * FROM attanence where classID = '$selectClassID' ";
+      $rs6 = mysqli_query($conn, $sql6)or die(mysqli_error($conn));
+      while($rc6 = mysqli_fetch_array($rs6)){
+        $searchStudent = $rc6['studentID'];
+        $sql7 = "SELECT * FROM student where studentID = '$searchStudent'";
+        $rs7 = mysqli_query($conn, $sql7)or die(mysqli_error($conn));
+        while($rc7 = mysqli_fetch_array($rs7)){
+            echo"<tr><td>".$rc6['attanence_date']."</td><td>".$rc7['studentName']."</td><td>".$rc6['attanence_status']."</td></tr>";
+        }
+      }
+      ?>";
+
+      $('#reportTable').append(reportList);
 
 
       $("#backBtn").click(function(){
@@ -115,6 +131,9 @@ function exportToExcel(){
     </table>
     <button id="reportBtn"style="width:250px;margin-top:30px;height:50px;background-color:green;color:#fff;font-weight:bold;font-size:25px;" onclick="exportToExcel()">Generation Report</button>
 
+    <table id="reportTable" hidden>
+      <tr class="firstRow"><th>Date</th><th>Student Name</th><th>Status</th></tr>
+    </table>
 
 
   </center>
