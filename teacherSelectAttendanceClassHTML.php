@@ -41,6 +41,7 @@
 
   <script type="text/javascript" language="javascript">
   $(document).ready(function(){
+
     var varStudentList = "<?php
           require_once('connectDB.php');
           $selectClassID = $_SESSION['rAttendanceClass'];
@@ -51,14 +52,15 @@
               $sql2 = "SELECT * FROM student where studentID = '$searchStudent'";
               $rs2 = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
               while($rc2 = mysqli_fetch_array($rs2)){
-                $rate = 0 ;
-                $numerator= 0 ;
-                $denominator = 0 ;
+                $rate = 100 ;
+                $numerator = 0 ;
+                $denominator = 0;
+                $percent =100;
                 $sql3 = "SELECT * FROM attanence where studentID = '$searchStudent' AND classID = '$selectClassID'";
                 $rs3 = mysqli_query($conn, $sql3)or die(mysqli_error($conn));
                 while($rc3 = mysqli_fetch_array($rs3)){
                   $denominator +=1 ;
-                  if($rc3['attanence_status'] == "attendance" || $rc3['attanence_status'] == "sickLeave"){
+                  if($rc3['attanence_status'] == "onTime" || $rc3['attanence_status'] == "sickLeave"){
                     $numerator+=1;
                   }else if($rc3['attanence_status'] == "late"){
                     $numerator+=0.5;
@@ -66,7 +68,11 @@
                     $numerator+=0;
                   }
                 }
-                $rate = $denominator/$numerator * 100;
+                if($denominator == 0 || $numerator == 0){
+                  $rate = 0;
+                }else{
+                $rate = $numerator * $percent / $denominator;
+                }
                 if($rate<70){
                 echo"<tr style='background-color:	#CD5C5C'><td>".$rc2['studentID']."</td><td>".$rc2['studentName']."</td><td>".$rate."%</td></tr>";
                 }else{
@@ -74,7 +80,6 @@
                 }
               }
           }
-        mysqli_free_result($rs);
       ?>";
 
       $('#studentShowList').append(varStudentList);
