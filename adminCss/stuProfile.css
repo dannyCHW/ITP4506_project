@@ -44,6 +44,20 @@ input[type=text],
 
 
     /* Set a style for the submit/register button */
+    #saveBtn{
+      background-color: green;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      opacity: 0.9;
+      border-radius: 12px;
+    }
+    #saveBtn:hover {
+      opacity: 1;
+    }
     #editBtn {
       background-color: #d13f13;
       color: white;
