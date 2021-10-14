@@ -1,4 +1,4 @@
-  
+
 <html>
 <head>
     <?php include 'teacherCheckSession.php'; ?>
@@ -70,6 +70,9 @@
           $("form[name='teacherSelectStudent']").submit();
         });
 
+        $("#btnAddStudent").click(function(){
+          window.location.replace("addStudentClassHTML.php");
+        });
       });
     </script>
 </head>
@@ -89,10 +92,13 @@
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
       </table>
 
+      <button id="btnAddStudent" style="width:300px;height:50px;background-color:green;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;margin-top:30px;">Add Student</button>
+
+
       <form id="classInfoForm" name="classInfoForm" method="POST" action="editClassInfo.php">
         <p style="text-align:center; font-size:30px;">Class Information:</p><textarea  type="text"class="classInfoDiv" name="textArea"id="textArea" style="height:150px;width:700px;font-size:30px; margin-bottom:30px;" readonly></textarea><br/>
       </form>
-        <button id="btnEditClassInfo" style="width:300px;height:50px;background-color:green;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;">Edit</button>
+        <button id="btnEditClassInfo" style="width:300px;height:50px;background-color:blue;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;">Edit</button>
         <button id="btnConfirmEditClassInfo" style="width:300px;height:50px;background-color:red;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;" hidden>Confirm Edit</button>
 
 
