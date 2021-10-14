@@ -33,21 +33,25 @@
                 $rs3 = mysqli_query($conn, $sql3)or die(mysqli_error($conn));
                 while($rc3 = mysqli_fetch_array($rs3)){
                   echo"<tr><td>".$rc['classID']."</td><td>".$rc2['classCode']."</td><td>".$rc2['schoolYear']."</td><td>".$rc3['teacherName']."</td><td>"."Current Class"."</td></tr>";
+                }
               }
-            }
-            /* search in recprd database*/
-            $sql4 = "SELECT * FROM classrecord where rclassID = '$classID' ";
-            $rs4 = mysqli_query($conn, $sql4)or die(mysqli_error($conn));
-            while($rc4 = mysqli_fetch_array($rs4)){
-              $teacherID = $rc4['rTeacherID'];
-              $sql5 = "SELECT * FROM teacher where teacherID = '$teacherID'";
-              $rs5 = mysqli_query($conn, $sql5)or die(mysqli_error($conn));
-              while($rc3 = mysqli_fetch_array($rs3)){
-                echo"<tr><td>".$rc['classID']."</td><td>".$rc4['rClassCode']."</td><td>".$rc2['rSchoolYear']."</td><td>".$rc5['teacherName']."</td><td>"."Previous Class"."</td></tr>";
-              }
-            }
-            /* stop in here */
           }
+          $sql4 = "SELECT * FROM allocationrecord where rStudentID = '$studentID' ORDER BY rClassID DESC";
+          $rs4 = mysqli_query($conn, $sql4)or die(mysqli_error($conn));
+          while($rc4 = mysqli_fetch_array($rs4)){
+              $rclassID = $rc4['rClassID'];
+              $sql5 = "SELECT * FROM classrecord where rClassID = '$rclassID' ";
+              $rs5 = mysqli_query($conn, $sql5)or die(mysqli_error($conn));
+              while($rc5 = mysqli_fetch_array($rs5)){
+                $rteacherID = $rc5['rTeacherID'];
+                $sql6 = "SELECT * FROM teacher where teacherID = '$rteacherID'";
+                $rs6 = mysqli_query($conn, $sql6)or die(mysqli_error($conn));
+                while($rc6 = mysqli_fetch_array($rs6)){
+                  echo"<tr style='background-color:Tomato'><td>".$rc4['rClassID']."</td><td>".$rc5['rClassCode']."</td><td>".$rc5['rSchoolYear']."</td><td>".$rc6['teacherName']."</td><td>"."Previus Class"."</td></tr>";
+                }
+              }
+          }
+          /* stop in here */
       ?>";
 
       $('#tableCss').append(allocationRecord);
