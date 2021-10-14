@@ -11,7 +11,7 @@ require_once('connectDB.php');
     $newPwd = $_POST['stuPwd'];
 
 
-    $sql = "UPDATE student SET studentName = '$newName',studentUsername = '$newUserName', studentPassword = '$newPwd', studentInfo = 'newInfo' where studentID = '$stuID'";
+    $sql = "UPDATE student SET studentName = '$newName',studentUsername = '$newUserName', studentPassword = '$newPwd', studentInfo = '$newInfo' where studentID = '$stuID'";
     $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
 
     $_SESSION['selectedStudentUserName'] = $newUserName;
