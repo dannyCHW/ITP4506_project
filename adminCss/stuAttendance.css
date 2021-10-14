@@ -8,7 +8,7 @@
   background-color: lightblue;
 }
 h3{
-  font-size: 30px;
+  font-size: 40px;
   padding-top: 25px;
 }
 p{
@@ -45,6 +45,6 @@ input[type=radio]{
   margin-bottom: 40px;
   font-weight: bold;
   color: #fff;
-  background-color: green;
+  background-color: #red;
   font-size: 30px;
 }

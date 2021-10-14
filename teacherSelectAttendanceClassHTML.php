@@ -8,13 +8,41 @@
 
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript"src="jslib/jquery-1.11.1.js"></script>
+
+
+  <script type="text/javascript">
+function exportToExcel(){
+  var downloadurl;
+  var dataFileType = 'application/vnd.ms-excel';
+  var tableSelect = document.getElementById('studentShowList');
+  var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+  // Specify file name
+  filename = 'StudentDetails.xls';
+  // Create download link element
+  downloadurl = document.createElement("a");
+  document.body.appendChild(downloadurl);
+  if(navigator.msSaveOrOpenBlob){
+    var blob = new Blob(['\ufeff', tableHTMLData], {
+      type: dataFileType
+    });
+    navigator.msSaveOrOpenBlob( blob, filename);
+  }else{
+    // Create a link to the file
+    downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
+    // Setting the file name
+    downloadurl.download = filename;
+    //triggering the function
+    downloadurl.click();
+  }
+}
+</script>
+
+
   <script type="text/javascript" language="javascript">
   $(document).ready(function(){
-    var teacherID =  "<?php echo $_SESSION['searchByClassID'] ?>";
-
     var varStudentList = "<?php
           require_once('connectDB.php');
-          $selectClassID = $_SESSION['searchByClassID'];
+          $selectClassID = $_SESSION['rAttendanceClass'];
           $sql = "SELECT * FROM allocation where classID = '$selectClassID' ";
           $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
           while($rc = mysqli_fetch_array($rs)){
@@ -85,7 +113,7 @@
     <table class="studebtTable" id="studentShowList" name="studentShowList">
       <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Attendance Rate</th></tr>
     </table>
-
+    <button id="reportBtn"style="width:250px;margin-top:30px;height:50px;background-color:green;color:#fff;font-weight:bold;font-size:25px;" onclick="exportToExcel()">Generation Report</button>
 
 
 

@@ -112,7 +112,7 @@
                 <option value='12'>December</option>
               </select>
             </p>
-            <button type="button" id="searchBtn">Search</button>
+            <button type="button" id="searchBtn" style="background-color:green;">Search</button>
           <table id="attendaceForm" class="studebtTable">
             <tr class="firstRow"><th>Date</th><th>Status</th></tr>
           </table>
