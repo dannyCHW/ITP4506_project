@@ -31,7 +31,7 @@
                     var content = "";
 
                     content += "<table class='styled-table'><thead id='TBtitle'><tr>" +
-                        "<th> </th><th>classID</th><th>classCode</th><th>schoolYear</th><th>classInfo</th><th> </th>" +
+                        "<th>archive</th><th>classID</th><th>classCode</th><th>schoolYear</th><th>classInfo</th><th> </th>" +
                         "</tr></thead><tbody id='TBbody'>";
 
                     for (let i in myObjarr) {
@@ -88,7 +88,7 @@
 
                         var jsonCheckeds = {
                             checkBoxs: JSON.stringify(checkBoxs)
-                        } 
+                        }
 
                         $.ajax({
                             type: "POST",
@@ -119,25 +119,11 @@
 
         });
 
-        // $(document).on('click', '#accept', function() {
-        //     var classValID = $(this).parent().siblings("#theid").text();
-
-        //     var passData = {
-        //         classID: classValID
-        //     };
-
-        //     $.ajax({
-        //         type: "POST",
-        //         url: 'adminClassManagementVerify.php',
-        //         data: passData,
-        //         datatype: 'text',
-        //         cache: false,
-        //         success: function(data) {
-        //             alert(data);
-        //             location.reload();
-        //         }
-        //     });
-        // });
+        $(document).on('click', '#edit', function() {
+            var classID = $(this).parent().siblings('#theid').text();
+            //alert(classID);
+            window.location = 'adminClassManagementEditHTML.php?classID=' + classID;
+        });
 
         function isEmpty(obj) {
             return Object.keys(obj).length === 0;
@@ -152,6 +138,8 @@
     <?php
     include 'adminMenuBar.html';
     ?>
+
+
     <center>
         <br />
         <!-- <button class="btnUnV">Archive</button> -->
@@ -172,9 +160,10 @@
             </tbody>
         </table>
         <br />
+        <div></div>
+        <br />
         <button id="aci">Save To Archive</button>
     </center>
-
 
 </body>
 
