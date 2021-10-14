@@ -62,6 +62,8 @@
       $("#studentShowList tr").click(function(){
         var selectStuID = $(this).find('td:first').text();
         $("#searchStudentID").val(selectStuID);
+        var selectStuName = $(this).find('td:eq(1)').text();
+        $("#searchStudentName").val(selectStuName);
         $("form[name='teacherSelectStudent']").submit();
       });
 
@@ -90,6 +92,7 @@
   </center>
   <form id="teacherSelectStudent" method="POST" action="teacherAttendanceSingleStudent.php" name="teacherSelectStudent"hidden>
     <input type="text" name="searchStudentID" id="searchStudentID"/>
+    <input type="text" name="searchStudentName" id="searchStudentName"/>
   </form>
 
 </div>
