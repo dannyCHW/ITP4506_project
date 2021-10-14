@@ -64,7 +64,7 @@
 
         /* */
 
-        $("#studentShowList tr").click(function(){
+        $("#studentShowList tr:not(:first-child)").click(function(){
           var selectStuID = $(this).find('td:first').text();
           $("#searchStudentID").val(selectStuID);
           $("form[name='teacherSelectStudent']").submit();

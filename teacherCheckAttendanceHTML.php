@@ -24,7 +24,7 @@
           ?>";
           $('#classList').append(varClassList);
 
-        $("table.classTable tr").click(function(){
+        $("table.classTable tr:not(:first-child)").click(function(){
           var selectClassID = $(this).find('td:first').text();
           $("#searchClass").val(selectClassID);
           $("form[name='teacherSelectClass']").submit();
