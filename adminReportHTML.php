@@ -133,7 +133,7 @@
 
                     content += "<b>Total Record : " + myJSON[0].total + " | On-time Rate : " + onTimeRate + "%" +
                         " | Late Rate : " + LateRate + "%" + " | SickLeave Rate : " + SickLeaveRate + "%" +
-                        " | Absent Rate : " + AbsentRate + "%" + "</b>";
+                        " | Absent Rate : " + AbsentRate + "%" + " | " + "<button id='Previous'>Previous Record</button>" + "</b>";
 
                     $('#sd').replaceWith(content);
                 }
@@ -236,6 +236,11 @@
                 }
             });
         });
+
+        $(document).on('click', '#Previous', function() {
+            window.location.href = "adminReportPastHTML.php";
+        });
+
     </script>
 
 
