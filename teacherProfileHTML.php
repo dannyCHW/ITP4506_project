@@ -39,6 +39,9 @@
         $('#userName').prop('readonly',true);
         $('#teacherID').prop('readonly',true);
         $('#teachername').prop('readonly',true);
+        $("#userName").css("background-color","#A9A9A9");
+        $("#teacherID").css("background-color","#A9A9A9");
+        $("#teachername").css("background-color","#A9A9A9");
 
         $(this).hide();
         $('#saveBtn').removeAttr('hidden');
