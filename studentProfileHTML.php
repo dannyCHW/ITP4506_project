@@ -33,7 +33,6 @@
       /* menu open & close */
       $("#editBtn").click(function(){
         $('.form_input').prop('readonly', false);
-        $(".form_input").css("background-color","#C8C8C8");
         $('#userName').prop('readonly',true);
         $("#userName").css("background-color","#A9A9A9");
         $('#stuID').prop('readonly',true);
