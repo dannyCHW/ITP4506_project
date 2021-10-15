@@ -85,8 +85,8 @@
   <form id="idForm" action="teacherEditProfile.php" name="teacherEdit" method="post" style="margin-top:25px;">
     <div method="post" class="proBody">
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Name:<input type="text" name="userName" id="userName" class="form_input" autocomplete="off" readonly/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name:<input type="text" name="teacherName" id="teachername" class="form_input" autocomplete="off" readonly/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teacher ID:<input type="text" name="teacherID"id="teacherID" class="form_input" autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name:<input type="text" name="teacherName" id="teachername" class="form_input"  autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teacher ID:<input type="text" name="teacherID"id="teacherID" class="form_input"  autocomplete="off" readonly/></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teacher Info:<input type="text" name="teacherInfo" id="teacherInfo" class="form_input" autocomplete="off" readonly/></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Old Password:<input type="password" name="oldPassword" id="oldPassword" class="form_input" autocomplete="off" readonly required/></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Password:<input type="password" name="newPassword" id="newPassword1" class="form_input" autocomplete="off"  readonly required/></p>

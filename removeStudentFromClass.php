@@ -4,7 +4,7 @@ require_once('connectDB.php');
 
     session_start();
 
-    $studentID = $_SESSION['searchByClassID'];
+    $studentID = $_SESSION['selectStudentID'];
     $classID = $_SESSION['searchByClassID'];
 
     $sql = "DELETE FROM allocation WHERE classID = '$classID' AND studentID ='$studentID'";
