@@ -1,6 +1,9 @@
 
 <html>
 <head>
+  <style>
+
+  </style>
     <title>Student List</title>
     <?php include 'teacherCheckSession.php'; ?>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -84,7 +87,7 @@
 
   <div class="canvas">
     <div class="head" style="height:80px;">
-      <h3 id="topic"> View Class </h3>
+      <h3 id="topic"> Student Lsit & Class Information </h3>
     </div>
     <center class="divStudentList"  >
       <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>

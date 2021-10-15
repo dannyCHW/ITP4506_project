@@ -75,7 +75,7 @@
   <?php include 'studentMenuBar.html'; ?>
 
   <center class="c1">
-  <h3> Profile Management</h3>
+  <h3 style="color:#504a57;"> Profile Management</h3>
 
   <div class="profileIcon">
   <img src="student_icon.jpg">

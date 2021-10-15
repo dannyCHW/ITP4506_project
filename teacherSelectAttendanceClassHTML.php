@@ -1,5 +1,41 @@
 <html>
 <head>
+  <style>
+  #reportBtn{
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+    margin-top: 70px;
+    font-size: 20px;
+  }
+  #reportBtn:hover {
+    opacity: 1;
+  }
+  #backPaeggBtn{
+    background-color: #e07722;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size:20px;
+  }
+  #backPaeggBtn:hover {
+    opacity: 1;
+  }
+
+  </style>
   <?php include 'teacherCheckSession.php'; ?>
     <title>Attendance Student List</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -103,7 +139,7 @@
       $('#reportTable').append(reportList);
 
 
-      $("#backBtn").click(function(){
+      $("#backPaeggBtn").click(function(){
           window.location.replace("teacherCheckAttendanceHTML.php");
       });
 
@@ -129,13 +165,13 @@
   <div class="head" style="height:80px;">
     <h3 id="topic"> Class Attendance</h3>
   </div>
-  <center class="divStudentList"  >
-    <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
+  <center class="divTable"  >
+    <button id="backPaeggBtn">Back To Class List</button>
 
-    <table class="studebtTable" id="studentShowList" name="studentShowList">
+    <table class="classTable" id="studentShowList" name="studentShowList">
       <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Attendance Rate</th></tr>
     </table>
-    <button id="reportBtn"style="width:250px;margin-top:30px;height:50px;background-color:green;color:#fff;font-weight:bold;font-size:25px;" onclick="exportToExcel()">Generation Report</button>
+    <button id="reportBtn" onclick="exportToExcel()">Generation Report</button>
 
     <table id="reportTable" hidden>
       <tr class="firstRow"><th>Date</th><th>Student Name</th><th>Status</th></tr>

@@ -3,6 +3,7 @@ h3{
   padding-top: 20px;
   font-size: 40px;
   padding-bottom: 10px;
+  color:#504a57;
 }
 .profileIcon{
   padding-bottom: 5px;
@@ -73,7 +74,6 @@ input[type=text],
     #editBtn:hover {
       opacity: 1;
     }
-
 
     .slideshow-container {
       max-width: 1000px;

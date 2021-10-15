@@ -31,9 +31,9 @@ input[type=radio]{
   table-layout:fixed；
 }
 .studebtTable th{
-  background-color: #108B28;
+  background-color: #4CAF50;
   color: #fff;
-  height: 70px
+  height: 70px;
 }
 .studebtTable td{
   font-size: 25px;

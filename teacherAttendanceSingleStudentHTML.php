@@ -2,6 +2,42 @@
 
 <head>
 
+  <style>
+  #backPageBtn{
+    background-color: #d13f13;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+    font-weight: bold;
+  }
+  #backPageBtn:hover {
+    opacity: 1;
+  }
+  h3{
+    margin-top: 50px;
+    color:#504a57;
+  }
+  #searchBtn{
+    background-color: #108B28;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+  }
+  #searchBtn:hover {
+    opacity: 1;
+  }
+  </style>
+
 
   <?php include 'teacherCheckSession.php'; ?>
   <title>Student Attendance Record</title>
@@ -75,7 +111,7 @@
               });
           }
     });
-    $("#backBtn").click(function(){
+    $("#backPageBtn").click(function(){
       window.location.replace("teacherSelectAttendanceClassHTML.php");
     });
   });
@@ -85,12 +121,12 @@
   <body>
       <?php include 'teacherMenuBar.html'; ?>
       <center class="background">
-        <div class="topicDiv">
+        <div>
           <h3>Check Attendace</h3>
         </div>
         <div class="body">
           <center class="selectDiv">
-            <button id="backBtn" style="height:40px;padding-bottom:3px;width:100%;background-color:#d13f13;color:#fff;font-weight:bold;font-size:30px;">Back To Class List</button>
+            <button id="backPageBtn">Back To Class List</button>
             <p id="name">Student Name : </p>
             <p id="text">Searching by : &nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" id="year" name="timeType" value="Year" checked>&nbsp; Year &nbsp;&nbsp;&nbsp;&nbsp;
@@ -112,7 +148,7 @@
                 <option value='12'>December</option>
               </select>
             </p>
-            <button type="button" id="searchBtn" style="background-color:green;">Search</button>
+            <button type="button" id="searchBtn" >Search</button>
           <table id="attendaceForm" class="studebtTable">
             <tr class="firstRow"><th>Date</th><th>Status</th></tr>
           </table>
