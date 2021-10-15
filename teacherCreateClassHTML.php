@@ -45,7 +45,6 @@
 
       <div class="canvas_body">
 
-      <p>Class Name: <input type="text" id="className" name="className" class="form_input" autocomplete="off" required/></p>
       <p>Class Code: <input type="text" id="code" name="code" class="form_input" autocomplete="off" required/></p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year: <input type="text" id="year" name="year" class="form_input" autocomplete="off" required/></p>
       <p>Information: <input type="text" id="classInfo" name="classInfo" class="form_input" placeholder="(Can Be Blank)" autocomplete="off" /></p>
