@@ -105,6 +105,7 @@
                                 //alert(myObjarr[0].adminID);
 
                                 alert(data);
+                                location.reload();
                             }
                         });
 

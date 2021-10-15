@@ -1,7 +1,7 @@
 <?php
 
 require_once('connectDB.php');
-$className = $_POST['className'];
+
 $classCode = $_POST['code'];
 $year = $_POST['year'];
 $classInfo = $_POST['classInfo'];
