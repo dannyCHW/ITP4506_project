@@ -78,7 +78,7 @@
   <h3 style="color:#504a57;"> Profile Management</h3>
 
   <div class="profileIcon">
-  <img src="icon.jpg">
+  <img src="teacherIcon.jpg">
   </div>
   </div>
   <div class="canvas_body">
