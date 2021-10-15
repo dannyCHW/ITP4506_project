@@ -65,6 +65,34 @@
         .styled-table tbody tr:last-of-type {
             border-bottom: 2px solid #009879;
         }
+
+        /*  */
+
+        .btnClass {
+            border: none;
+            color: #e8edf2;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            width: 150px;
+            border-radius: 5px;
+        }
+
+
+        .btnClass {
+
+            color: black;
+            border: 2px solid #483cb4;
+        }
+
+        .btnClass:hover {
+            background-color: #483cb4;
+            color: #e8edf2;
+        }
     </style>
     <script>
         /* menu open & close */
@@ -73,6 +101,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" language="javascript">
+
         $(document).ready(function() {
 
             $('#logOut').click(function() {
@@ -126,10 +155,80 @@
 
                     content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanenceID</th><th>attanence_status</th><th>attanence_date</th><th>updateTime</th><th>classID</th><th>studentID</th></tr></thead><tbody id='TBbody'>";
                     for (let i in myObjarr) {
-                        content += "<tr><td id='theid'>" + myObjarr[i].attanenceID + "</td><td>" 
-                        + myObjarr[i].attanence_status + "</td><td>" + myObjarr[i].attanence_date + "</td><td>"
-                        + myObjarr[i].updateTime + "</td><td>" + myObjarr[i].classID + "</td><td>" + myObjarr[i].studentID 
-                        + "</td></tr>";
+                        content += "<tr><td id='theid'>" + myObjarr[i].attanenceID + "</td><td>" +
+                            myObjarr[i].attanence_status + "</td><td>" + myObjarr[i].attanence_date + "</td><td>" +
+                            myObjarr[i].updateTime + "</td><td>" + myObjarr[i].classID + "</td><td>" + myObjarr[i].studentID +
+                            "</td></tr>";
+                    }
+                    content += "</tbody></table>";
+
+                    $('table').replaceWith(content);
+                }
+            });
+
+            $(".search").on("keyup", function() {
+                var word = $(this).val();
+                $("tr:gt(0)").hide().filter(':contains("' + word + '")').show();
+            });
+
+            $('.btnClass').click(function() {
+                $("#titleS").replaceWith("<h3>Select Class</h3>");
+                $.ajax({
+                    type: "POST",
+                    url: 'adminReportSearchClass.php',
+                    datatype: 'json',
+                    cache: false,
+                    success: function(data) {
+
+                        const myJSON = data;
+                        //alert(myJSON);
+                        const myObjarr = JSON.parse(myJSON);
+                        //alert(myObjarr[0].attanenceID);
+
+                        var content = "";
+
+                        content += "<table class='styled-table'><thead id='TBtitle'><tr><th>classID</th><th>classCode</th><th>classInfo</th><th>schoolYear</th><th>teacherID</th><th></th></tr></thead><tbody id='TBbody'>";
+                        for (let i in myObjarr) {
+                            content += "<tr><td id='theid'>" + myObjarr[i].classID + "</td><td>" +
+                                myObjarr[i].classCode + "</td><td>" + myObjarr[i].classInfo + "</td><td>" +
+                                myObjarr[i].schoolYear + "</td><td>" + myObjarr[i].teacherID +
+                                "</td><td>" + "<button id='goAttendance'>Check Attendance</button>" + "</td></tr>";
+                        }
+                        content += "</tbody></table>";
+
+                        $('table').replaceWith(content);
+                    }
+                });
+            });
+
+        });
+
+        $(document).on('click', '#goAttendance', function() {
+            var valID = $(this).parent().siblings("#theid").text();
+            var passdata = {
+                classID: valID
+            };
+            $.ajax({
+                type: "POST",
+                url: 'adminReportClassAttendance.php',
+                data: passdata,
+                datatype: 'json',
+                cache: false,
+                success: function(data) {
+
+                    const myJSON = data;
+                    //alert(myJSON);
+                    const myObjarr = JSON.parse(myJSON);
+                    //alert(myObjarr[0].attanenceID);
+
+                    var content = "";
+
+                    content += "<table class='styled-table'><thead id='TBtitle'><tr><th>class   ID</th><th>attanenceID</th><th>attanence_status</th><th>attanence_date</th><th>updateTime</th><th>studentID</th></tr></thead><tbody id='TBbody'>";
+                    for (let i in myObjarr) {
+                        content += "<tr><td>" + valID + "</td><td>" + myObjarr[i].attanenceID + "</td><td>" +
+                            myObjarr[i].attanence_status + "</td><td>" + myObjarr[i].attanence_date + "</td><td>" +
+                            myObjarr[i].updateTime + "</td><td>" + myObjarr[i].studentID +
+                            "</td></tr>";
                     }
                     content += "</tbody></table>";
 
@@ -162,6 +261,10 @@
 
         <br />
         <input type="text" class="search" placeholder="Search.." name="search">
+        <br /><br />
+        <button class="btnClass" id="btnClass">Class</button>
+        <br /><br /><hr />
+        <h3 id="titleS">Overall Attendance Status</h3>
         <table></table>
     </center>
 </body>
