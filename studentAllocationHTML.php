@@ -1,7 +1,13 @@
 <html>
 
 <head>
-
+  <style>
+    h3{
+      color:#504a57;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    </style>
 
   <title>Allication Record</title>
   <?php include 'studentCheckSession.php'; ?>
@@ -62,7 +68,7 @@
   <body>
       <?php include 'studentMenuBar.html'; ?>
       <center class="background">
-        <div class="topicDiv">
+        <div class="">
           <h3>Allocation Record</h3>
         </div>
         <div class="body">

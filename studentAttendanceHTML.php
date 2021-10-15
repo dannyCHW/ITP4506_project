@@ -2,6 +2,31 @@
 
 <head>
 
+  <style>
+    h3{
+      color:#504a57;
+      margin-top: 30px;
+    }
+    #searchBtn{
+
+      background-color: #4CAF50;
+      color: white;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 80%;
+      opacity: 0.9;
+      border-radius: 12px;
+      height:50px;
+      margin-bottom: 30px;
+      font-weight: bold;
+      font-size:20px;
+    }
+    #backPaeggBtn:hover {
+      opacity: 1;
+    }
+  </style>
+
 
   <title>Check Attendance</title>
   <?php include 'studentCheckSession.php'; ?>
@@ -79,7 +104,7 @@
   <body>
       <?php include 'studentMenuBar.html'; ?>
       <center class="background">
-        <div class="topicDiv">
+        <div class="">
           <h3>Check Attendace</h3>
         </div>
         <div class="body">
@@ -104,7 +129,7 @@
                 <option value='12'>December</option>
               </select>
             </p>
-            <button type="button" id="searchBtn" style="background-color:green;">Search</button>
+            <button type="button" id="searchBtn" >Search</button>
           <table id="attendaceForm" class="studebtTable">
             <tr class="firstRow"><th>Date</th><th>Status</th></tr>
           </table>

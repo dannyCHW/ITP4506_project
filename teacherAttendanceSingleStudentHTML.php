@@ -14,6 +14,7 @@
     border-radius: 12px;
     height:50px;
     font-weight: bold;
+    font-size: 20px;
   }
   #backPageBtn:hover {
     opacity: 1;

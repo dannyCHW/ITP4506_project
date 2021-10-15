@@ -2,7 +2,23 @@
 <html>
 <head>
   <style>
-
+  #backpageBtn{
+    background-color: #d13f13;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size:20px;
+  }
+  #backpageBtn:hover {
+    opacity: 1;
+  }
   </style>
     <title>Student List</title>
     <?php include 'teacherCheckSession.php'; ?>
@@ -62,7 +78,7 @@
 
         });
 
-        $("#backBtn").click(function(){
+        $("#backpageBtn").click(function(){
             window.location.replace("teacherClassManagementHTML.php");
         });
 
@@ -90,7 +106,14 @@
       <h3 id="topic"> Student Lsit & Class Information </h3>
     </div>
     <center class="divStudentList"  >
-      <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
+      <button id="backpageBtn">Back To Class List</button>
+
+      <form id="classInfoForm" name="classInfoForm" method="POST" action="editClassInfo.php">
+        <p style="text-align:center; font-size:30px;">Class Information:</p><textarea  type="text"class="classInfoDiv" name="textArea"id="textArea" style="height:150px;width:700px;font-size:30px; margin-bottom:30px;" readonly></textarea><br/>
+      </form>
+        <button id="btnEditClassInfo" style="width:300px;height:50px;background-color:blue;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;">Edit</button>
+        <button id="btnConfirmEditClassInfo" style="width:300px;height:50px;background-color:red;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;" hidden>Confirm Edit</button>
+
 
       <table class="studebtTable" id="studentShowList" name="studentShowList">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
@@ -99,11 +122,6 @@
       <button id="btnAddStudent" style="width:300px;height:50px;background-color:green;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;margin-top:30px;">Add Student</button>
 
 
-      <form id="classInfoForm" name="classInfoForm" method="POST" action="editClassInfo.php">
-        <p style="text-align:center; font-size:30px;">Class Information:</p><textarea  type="text"class="classInfoDiv" name="textArea"id="textArea" style="height:150px;width:700px;font-size:30px; margin-bottom:30px;" readonly></textarea><br/>
-      </form>
-        <button id="btnEditClassInfo" style="width:300px;height:50px;background-color:blue;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;">Edit</button>
-        <button id="btnConfirmEditClassInfo" style="width:300px;height:50px;background-color:red;font-weight:bold;color:#fff;margin-bottom:40px;font-size:25px;" hidden>Confirm Edit</button>
 
 
     </center>

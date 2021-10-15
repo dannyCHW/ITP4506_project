@@ -18,7 +18,7 @@
     opacity: 1;
   }
   #backPaeggBtn{
-    background-color: #e07722;
+    background-color: #d13f13;
     color: white;
     margin: 8px 0;
     border: none;
@@ -34,6 +34,7 @@
   #backPaeggBtn:hover {
     opacity: 1;
   }
+
 
   </style>
   <?php include 'teacherCheckSession.php'; ?>
@@ -111,7 +112,7 @@
                 $rate = $numerator * $percent / $denominator;
                 }
                 if($rate<70){
-                echo"<tr style='background-color:	#CD5C5C'><td>".$rc2['studentID']."</td><td>".$rc2['studentName']."</td><td>".$rate."%</td></tr>";
+                echo"<tr style='background-color:#CD5C5C;'><td>".$rc2['studentID']."</td><td>".$rc2['studentName']."</td><td>".$rate."%</td></tr>";
                 }else{
                 echo"<tr><td>".$rc2['studentID']."</td><td>".$rc2['studentName']."</td><td>".$rate."%</td></tr>";
                 }
