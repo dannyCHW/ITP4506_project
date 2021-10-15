@@ -1,6 +1,26 @@
 
 <html>
 <head>
+  <style>
+    #backPageBtn{
+      background-color: #d13f13;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 80%;
+      opacity: 0.9;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    #backPageBtn:hover {
+      opacity: 1;
+    }
+
+  </style>
     <title>Add Student Form</title>
     <?php include 'teacherCheckSession.php'; ?>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -34,7 +54,7 @@
 
       $('#studentShowList').append(noAsignStuList);
 
-      $("#backBtn").click(function(){
+      $("#backPageBtn").click(function(){
           window.location.replace("teacherStudentListHTML.php");
       });
       $(' #studentShowList tr ').click(function(){
@@ -56,9 +76,9 @@
       <h3 id="topic"> Not Assigned Student List </h3>
     </div>
     <center class="divStudentList"  >
-      <button id="backBtn" style="height:40px;padding-bottom:3px;">Back To Class List</button>
+      <button id="backPageBtn">Back To Class List</button>
 
-      <table class="studebtTable" id="studentShowList" name="studentShowList">
+      <table class="classTable" id="studentShowList" name="studentShowList">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Add To Class</th></tr>
       </table>
 

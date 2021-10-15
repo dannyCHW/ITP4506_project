@@ -60,7 +60,8 @@
           $("#stuName").prop('readonly', false);
           $("#stuInfo").prop('readonly', false);
           $("#stuPwd").prop('readonly', false);
-
+          $("#stuUserName").css("background-color","#A9A9A9");
+          $("#stuID").css("background-color","#A9A9A9");
         });
         $("#backStudentListBtn").click(function(){
           window.location.replace("teacherStudentListHTML.php");
