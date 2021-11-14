@@ -1,0 +1,70 @@
+#btnNewForm {
+    background-color: #4CAF50;
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    height: 100px;
+    border-radius: 12px;
+}
+
+
+#btnNewForm  {
+    background-color: #e8edf2;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+#btnNewForm:hover {
+    background-color: #4CAF50;
+    color: #e8edf2;
+}
+/*==============================*/
+#editForm {
+    background-color: #483cb4;
+
+    border: none;
+    color: #e8edf2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    height: 100px;
+    border-radius: 12px;
+
+}
+
+#editForm {
+    background-color: #e8edf2;
+    color: black;
+    border: 2px solid #483cb4;
+}
+
+#editForm:hover {
+    background-color: #483cb4;
+    color: #e8edf2;
+}
+
+/* ============================== */
+
+h1{
+  padding-top: 270px;
+}
+#btnNewForm{
+  margin-top: 50px;
+}
+#editForm{
+  margin-top: 50px;
+}
