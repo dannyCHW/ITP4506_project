@@ -94,11 +94,13 @@
     <script type="text/javascript"src="jslib/jquery-1.11.1.js"></script>
     <script type="text/javascript" language="javascript">
     $(document).ready(function(){
+
+
       var teacherID =  "<?php echo $_SESSION['teacherID'] ?>";
 
       var varStudentList = "<?php
             require_once('connectDB.php');
-            $selectClassID = $_SESSION['searchByClassID'];
+            $selectClassID = $_SESSION['editAttendanceClassID'];
             $sql = "SELECT * FROM allocation where classID = '$selectClassID' ";
             $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
             while($rc = mysqli_fetch_array($rs)){
@@ -115,47 +117,10 @@
 
         $('#studentShowList').append(varStudentList);
 
-        var currentClassInfo = "<?php
-          require_once('connectDB.php');
-          $selectClassID = $_SESSION['searchByClassID'];
-          $sql3 = "SELECT classInfo FROM class where classID = '$selectClassID' ";
-          $rs3 = mysqli_query($conn, $sql3)or die(mysqli_error($conn));
-
-          while($rc3 = mysqli_fetch_array($rs3)){
-              echo $rc3['classInfo'];
-          }
-        mysqli_free_result($rs3);
-        ?>";
-
-        $("#textArea").text(currentClassInfo);
-
-
-        $("#btnEditClassInfo").click(function(){
-          $("#textArea").prop('readonly',false);
-          $(this).hide();
-          $("#btnConfirmEditClassInfo").show();
-        });
-
-        $("#btnConfirmEditClassInfo").click(function(){
-
-          $("form[name='classInfoForm']").submit();
-
-        });
-
-        $("#backpageBtn").click(function(){
-            window.location.replace("teacherClassManagementHTML.php");
-        });
-
-        /* */
-
         $("#studentShowList tr:not(:first-child)").click(function(){
           var selectStuID = $(this).find('td:first').text();
           $("#searchStudentID").val(selectStuID);
           $("form[name='teacherSelectStudent']").submit();
-        });
-
-        $("#btnAddStudent").click(function(){
-          window.location.replace("addStudentClassHTML.php");
         });
       });
     </script>
@@ -170,26 +135,14 @@
       <h3 id="topic"> Student Lsit & Class Information </h3>
     </div>
     <center class="divStudentList"  >
-      <button id="backpageBtn">Back To Class List</button>
-
-      <form id="classInfoForm" name="classInfoForm" method="POST" action="editClassInfo.php">
-        <p style="text-align:center; font-size:30px;">Class Information:</p><textarea  type="text"class="classInfoDiv" name="textArea"id="textArea" style="height:150px;width:700px;font-size:30px; margin-bottom:30px;background-color:lightblue;" readonly></textarea><br/>
-      </form>
-        <button id="btnEditClassInfo" >Edit Class Information</button>
-        <button id="btnConfirmEditClassInfo"  hidden>Confirm Edit</button>
-
+      <button id="backpageBtn">Back To Select Class</button>
 
       <table class="classTable" id="studentShowList" name="studentShowList">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
       </table>
 
-      <button id="btnAddStudent" >Add Student</button>
-
-
-
-
     </center>
-    <form id="teacherSelectStudent" method="POST" action="teacherSelectStudent.php" name="teacherSelectStudent"hidden>
+    <form id="teacherSelectStudent" method="POST" action="teacherSelectEditAttendanceSelectStudent.php" name="teacherSelectStudent"hidden>
       <input type="text" name="searchStudentID" id="searchStudentID"/>
     </form>
   </div>

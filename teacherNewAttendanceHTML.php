@@ -160,6 +160,7 @@
                 status:finallyStatus} ,
 
               success: function(data) {
+                var final = data;
               }
            });
       }
@@ -179,11 +180,17 @@
               stuID:cellValue2,
               status:finallyStatus2} ,
             success: function(data) {
-              
+
             }
          });
        }
-       alert("ASD");
+
+       if(final="wrong"){
+         alert("That day already created attendance!");
+       }else{
+         alert("Create successful!");
+         location.reload();
+       }
 
     });
     </script>

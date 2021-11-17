@@ -6,7 +6,7 @@
   $stuID = $_POST['stuID'];
   $status = $_POST['status'];
 
-  $sql = "SELECT * FROM attanence WHERE classID='$classID' AND attanence_date='$day' AND studentID='$stuID'";
+  $sql = "SELECT * FROM attanence WHERE classID='$classID' AND attanence_date='$day'";
   $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
   if(mysqli_num_rows($rs) > 0){
     echo "wrong";
