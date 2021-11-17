@@ -42,6 +42,8 @@
   <script type="text/javascript" src="jslib/jquery-1.11.1.js"></script>
   <script type="text/javascript" language="javascript">
   $(document).ready(function(){
+
+
       $('input[type=radio][name=timeType]').click(function() {
         if ($(this).val() === 'Year') {
           $("#pMonthSelect").hide();
@@ -49,6 +51,7 @@
           $("#pMonthSelect").show()
         }
     });
+
     $("#searchBtn").click(function(){
       if($("#year").is(':checked')) {
         $("#attendaceForm").find("tr:gt(0)").remove();
@@ -97,6 +100,7 @@
           }
 
     });
+      $('#searchBtn').click();
   });
   </script>
   </head>
@@ -130,7 +134,7 @@
               </select>
             </p>
             <button type="button" id="searchBtn" >Search</button>
-          <table id="attendaceForm" class="studebtTable">
+          <table id="attendaceForm" class="studebtTable" style="padding-right:100px;padding-left  :100px;">
             <tr class="firstRow"><th>Date</th><th>Status</th></tr>
           </table>
           </center>

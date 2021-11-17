@@ -1,14 +1,19 @@
-
+body{
+  background: #eaafc8;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
+  min-height: 100vh;
+}
 
 .entrytable{
     position: absolute;
     top: 35%;
     margin-top: -50px;
-  
+
 }
 
 .buttonAdmin {
-    background-color: #4CAF50;  
+    background-color: #4CAF50;
 
     border: none;
     color: #e8edf2;
@@ -41,7 +46,7 @@
 
 .buttonTeacher {
     background-color: #483cb4;
-    
+
     border: none;
     color: #e8edf2;
     padding: 16px 32px;
@@ -77,7 +82,7 @@
 
 .buttonStudent {
     background-color: #e07722;
-    
+
     border: none;
     color: #e8edf2;
     padding: 16px 32px;

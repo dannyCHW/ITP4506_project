@@ -2,6 +2,11 @@
 <html>
 
 <head>
+  <style>
+  p{
+    font-weight: bold;
+  }
+  </style>
 
 
   <title>StudentProfile</title>
@@ -83,14 +88,14 @@
   <div class="r_text">
   <form id="idForm" action="studentEditProfile.php" name="stuEdit" method="post" style="margin-top:25px;">
     <div method="post" class="proBody">
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Name:<input type="text" name="userName" id="userName" class="form_input" autocomplete="off" readonly/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name:<input type="text" name="stuName" id="name" class="form_input" autocomplete="off" readonly/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student ID:<input type="text" name="stuID"id="stuID" class="form_input" autocomplete="off" readonly/></p>
-        <p>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student Info:<input type="text" name="stuInfo" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Old Password:<input type="password" name="oldPassword" id="oldPassword" class="form_input" autocomplete="off"  readonly required/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Password:<input type="password" name="newPassword" id="newPassword1" class="form_input" autocomplete="off" readonly required/></p>
-        <p>Repeat Password:<input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly required/></p>
-        <button type="button" id="editBtn" class="button">Edit</button>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Name:&nbsp;&nbsp;<input type="text" name="userName" id="userName" class="form_input" autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name:&nbsp;&nbsp;<input type="text" name="stuName" id="name" class="form_input" autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student ID:&nbsp;&nbsp;<input type="text" name="stuID"id="stuID" class="form_input" autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student Info:&nbsp;&nbsp;<input type="text" name="stuInfo" id="stuInfo" class="form_input" autocomplete="off" readonly/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Old Password:&nbsp;&nbsp;<input type="password" name="oldPassword" id="oldPassword" class="form_input" autocomplete="off"  readonly required/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Password:&nbsp;&nbsp;<input type="password" name="newPassword" id="newPassword1" class="form_input" autocomplete="off" readonly required/></p>
+        <p>Repeat Password:&nbsp;&nbsp;<input type="password" id="newPassword2" class="form_input" autocomplete="off" readonly required/></p>
+        <button type="button" id="editBtn" class="button"style=" z-index:999;">Edit</button>
         <button id="saveBtn" type="button" name="editProfile" class="button" hidden>Save</button>
   </div>
 </form>

@@ -72,7 +72,7 @@
           <h3>Allocation Record</h3>
         </div>
         <div class="body">
-          <table class="tableCss" id="tableCss">
+          <table class="tableCss" id="tableCss" style="padding-left:100px;padding-right:100px;">
             <tr class="firstRow"><th>Class ID</th><th>Class Code</th><th>Year</th><th>Teacher Name</th><th>Status</th></tr>
           </table>
         </div>
