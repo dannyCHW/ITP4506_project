@@ -49,7 +49,6 @@
             $.ajax({
                 type: "POST",
                 url: 'studentSLGetAtt.php',
-                datatype: 'json',
                 cache: false,
                 success: function(data) {
 
@@ -64,12 +63,12 @@
 
                     var content = "";
 
-                    content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanence status</th><th>attanence Date</th><th></th></tr></thead><tbody id='TBbody'>";
+                    content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanence status</th><th>attanence Date</th><th>Certificate Required</th></tr></thead><tbody id='TBbody'>";
                     for (let i in myObjarr) {
 
                         content += "<tr><td id='theid'>" +
                             myObjarr[i].attanence_status + "</td><td>" + myObjarr[i].attanence_date +
-                            "</td><td>" +
+                            "</td><td>" + "<input type='file' id='fileCert' name='fileCert'/> <button id='btnUploads' name='btnUploads'>Upload</button>" +
                             "</td></tr>";
                     }
                     content += "</tbody></table>";
@@ -77,6 +76,15 @@
                     $('table').replaceWith(content);
                 }
             });
+
+        });
+
+        $(document).on('click', '#btnUploads', function() {
+            var file_data = $('#fileCert').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+
+            
         });
     </script>
     <style></style>
