@@ -127,6 +127,10 @@
            location.reload();
         });
 
+        $("#backpageBtn").click(function(){
+            window.location.replace("teacherSelectEditAttendanceStudentListHTML.php");
+        });
+
       });
     </script>
 </head>
@@ -137,7 +141,7 @@
 
   <div class="canvas">
     <div class="head" style="height:80px;">
-      <h3 id="topic"> Student Lsit & Class Information </h3>
+      <h3 id="topic"> Edit Student Attanence Record</h3>
     </div>
     <center class="divStudentList"  >
       <button id="backpageBtn">Back To Select Class</button>

@@ -98,9 +98,9 @@
                 $rs3 = mysqli_query($conn, $sql3)or die(mysqli_error($conn));
                 while($rc3 = mysqli_fetch_array($rs3)){
                   $denominator +=1 ;
-                  if($rc3['attanence_status'] == "onTime" || $rc3['attanence_status'] == "sickLeave"){
+                  if($rc3['attanence_status'] == "Present" || $rc3['attanence_status'] == "SickLeave"|| $rc3['attanence_status'] == "PersonalLeave"){
                     $numerator+=1;
-                  }else if($rc3['attanence_status'] == "late"){
+                  }else if($rc3['attanence_status'] == "Late"){
                     $numerator+=0.5;
                   }else{
                     $numerator+=0;
