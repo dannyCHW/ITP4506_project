@@ -136,8 +136,55 @@
        $("#submitbtn").removeAttr('hidden');
     });
 
+
     $(document).on('click', '#submitbtn', function() {
-      alert("ASD");
+
+      var elements = document.getElementsByClassName("ai");
+
+      var tabody1= document.getElementById('t1');
+      var tbody1RowCount = tabody1.rows.length;
+      var day = $("#datePicker").val();
+      var class_ID = $("#classSelect").val();
+
+      for(var i=0; i<tbody1RowCount; i+=1){
+         var row = tabody1.rows[i];
+         var cellValue = row.cells[1].innerHTML;
+         var finallyStatus = elements[i].value;
+
+           $.ajax({
+              type: 'post',
+              url: 'teacherCreateRecord.php',
+              data: {id:class_ID,
+                day:day,
+                stuID:cellValue,
+                status:finallyStatus} ,
+
+              success: function(data) {
+              }
+           });
+      }
+
+      var tbody2 = document.getElementById('t2');
+      var tbody2RowCount = tbody2.rows.length;
+      for(var i=0; i<tbody2RowCount; i+=1){
+         var row2 = tbody2.rows[i];
+         var cellValue2 = row2.cells[1].innerHTML;
+         var finallyStatus2 = elements[tbody2RowCount+i].value;
+
+         $.ajax({
+            type: 'post',
+            url: 'teacherCreateRecord.php',
+            data: {id:class_ID,
+              day:day,
+              stuID:cellValue2,
+              status:finallyStatus2} ,
+            success: function(data) {
+              
+            }
+         });
+       }
+       alert("ASD");
+
     });
     </script>
 </head>
@@ -179,7 +226,7 @@
           <table id="table1" name="table1"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
           <table id="table2" name="table2"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
           <br />
-          <button  name="submit" class="registerbtn" id="submitbtn" hidden><b>Create Attendance</b> </button>
+          <button class="registerbtn" id="submitbtn" hidden><b>Create Attendance</b> </button>
         </div>
     </div>
   </center>
