@@ -2,8 +2,16 @@
 require_once('connectDB.php');
 
 $theDate = $_POST['theDate'];
+$classID = $_POST['classID'];
 
-$sql = "SELECT * FROM attanence WHERE attanence_date = '$theDate' ORDER BY classID";
+$sql = "";
+
+if($classID == "*"){
+    $sql = "SELECT * FROM attanence WHERE attanence_date = '$theDate' ORDER BY classID";
+} else {
+    $sql = "SELECT * FROM attanence WHERE attanence_date = '$theDate' AND classID = '$classID' ORDER BY studentID";
+}
+
     $rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     
     $arr = (array) null;
