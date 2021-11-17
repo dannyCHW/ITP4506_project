@@ -37,10 +37,12 @@
         color: #ffffff;
         text-align: left;
     }
-
+    th {
+      height:60px;
+    }
     #table1  th,
     #table1  td {
-        padding: 12px 15px;
+        padding: 5px 4px;
     }
 
     #table1  tr {
@@ -48,7 +50,7 @@
     }
 
     #table1 tr:nth-of-type(even) {
-        background-color: #f3f3f3;
+        background-color: #483cb4;
     }
 
     #table1 tr:last-of-type {
@@ -73,7 +75,7 @@
 
     #table2  th,
     #table2  td {
-        padding: 12px 15px;
+      padding: 5px 4px;
     }
 
     #table2  tr {
@@ -81,11 +83,17 @@
     }
 
     #table2 tr:nth-of-type(even) {
-        background-color: #f3f3f3;
+        background-color: #009879;
     }
 
     #table2 tr:last-of-type {
         border-bottom: 2px solid #483cb4;
+    }
+
+    #command{
+      height:40px;
+      font-size: 8px;
+      padding: 0px;
     }
     </style>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -99,23 +107,37 @@
 
       $("#classSelect").prop("selectedIndex", -1);
 
+    });
 
+
+
+    $(document).on('click', 'tr td input:radio', function() {
+      $(this).nextUntil().remove();
+      alert("ASD");
     });
 
     $(document).on('change', '#classSelect', function() {
 
       var classID =  $('#classSelect').val();
-
+      $("td").remove();
       $.ajax({
          type: 'post',
          url: 'teacherAttendanceAjax.php',
          data: {id:classID} ,
-         datatype: 'text',
+         dataType: 'json',
+         cache: false,
          success: function(data) {
-           alert(data);
+           var tab1 = data.a;
+           var tab2 = data.b;
+           $("#table1").append(tab1);
+           $("#table2").append(tab2);
          }
       });
+       $("#submitbtn").removeAttr('hidden');
+    });
 
+    $(document).on('click', '#submitbtn', function() {
+      alert("ASD");
     });
     </script>
 </head>
@@ -124,50 +146,42 @@
 <?php include 'teacherMenuBar.html'; ?>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <center>
+    <div class="main">
+        <div class="container">
+          <h1 class="r_text">Create Attendance</h1>
+          <p class="r_text">Please Select The Class You Want To Take Attendance.</p>
+          <br />
+          <hr>
+          <br>
+          <label><b>Select Class: </b></label>
 
-<center>
-  <div class="main">
-    <form action="xxxxx" method="post">
-      <div class="container">
-        <h1 class="r_text">Create Attendance</h1>
-        <p class="r_text">Please Select The Class You Want To Take Attendance.</p>
-        <br />
-        <hr>
-        <br>
-        <label><b>Select Class: </b></label>
-
-        <select name="classSelect" id="classSelect">
-            <?php
-            require_once('connectDB.php');
-            $teacherID = $_SESSION['teacherID'];
-            $sql = "SELECT * FROM class where teacherID = $teacherID";
-            $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
-            while($rc = mysqli_fetch_array($rs)){
+          <select name="classSelect" id="classSelect">
+              <?php
+              require_once('connectDB.php');
+              $teacherID = $_SESSION['teacherID'];
+              $sql = "SELECT * FROM class where teacherID = $teacherID";
+              $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
+              while($rc = mysqli_fetch_array($rs)){
+                ?>
+              <option><?php echo$rc['classCode'] ?></option>
+              <?php
+              };
               ?>
-            <option><?php echo$rc['classCode'] ?></option>
-            <?php
-            };
-            ?>
-        </select>
-        <br>
-        <label><b> &nbsp&nbspSelect Date: </b></label>
-        <input type="date" id="datePicker"  value="<?php echo date('Y-m-d'); ?>"></input>
-        <br />
+          </select>
+          <br>
+          <label><b> &nbsp&nbspSelect Date: </b></label>
+          <input type="date" id="datePicker"  value="<?php echo date('Y-m-d'); ?>"></input>
+          <br />
 
+          <hr>
 
-        <hr>
-
-        <table id="table1"><tr><th>Studnet Name</th><th>Studnet ID</th></tr><table>
-        <table id="table2"><tr><th>Studnet Name</th><th>Studnet ID</th></tr><table>
-        <br />
-        <button type="submit" name="submit" class="registerbtn" id="submitbtn" hidden><b>Create Account</b> </button>
-      </div>
-    </form>
-  </div>
-
-
-
-</center>
-
+          <table id="table1" name="table1"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
+          <table id="table2" name="table2"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
+          <br />
+          <button  name="submit" class="registerbtn" id="submitbtn" hidden><b>Create Attendance</b> </button>
+        </div>
+    </div>
+  </center>
 </body>
 </html>
