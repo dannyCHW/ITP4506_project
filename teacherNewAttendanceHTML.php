@@ -109,8 +109,6 @@
 
     });
 
-
-
     $(document).on('click', 'tr td input:radio', function() {
       $(this).nextUntil().remove();
       alert("ASD");

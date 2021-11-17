@@ -19,6 +19,23 @@
   #backpageBtn:hover {
     opacity: 1;
   }
+  #btnConfirmEdit{
+    background-color: #009879;
+    color: white;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size:20px;
+  }
+  #btnConfirmEdit:hover {
+    opacity: 1;
+  }
   h3{
     color:#504a57;
   }
@@ -44,44 +61,22 @@
   #btnEditClassInfo:hover {
     opacity: 1;
   }
-  #btnConfirmEditClassInfo{
-     background-color: red;
-      color: white;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 30%;
-      opacity: 0.9;
-      border-radius: 12px;
-      height:50px;
-      margin-bottom: 30px;
-      font-weight: bold;
-      font-size:20px;
-    }
-    #btnConfirmEditClassInfo:hover {
-      opacity: 1;
-    }
-    #btnAddStudent{
-      background-color: #4CAF50;
-       color: white;
-       margin: 8px 0;
-       border: none;
-       cursor: pointer;
-       width: 30%;
-       opacity: 0.9;
-       border-radius: 12px;
-       height:50px;
-       margin-bottom: 30px;
-       font-weight: bold;
-       font-size:20px;
-       margin-top: 30px;
-     }
-     #btnConfirmEditClassInfo:hover {
-       opacity: 1;
-     }
+
      #textArea{
        color: #504a57;
        font-weight: bold;
+     }
+     #selection{
+       height:40px;
+       font-size: 20px;
+       padding: 0px;
+       border-radius:36px;
+       display:inline-block;
+       text-align: center;
+       font-weight: bold;
+     }
+     #btnConfirmEdit{
+
      }
   </style>
     <title>Student List</title>
@@ -105,21 +100,33 @@
                 $sql2 = "SELECT * FROM student where studentID = '$selectStudent'";
                 $rs2 = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
                 while($rc2 = mysqli_fetch_array($rs2)){
-          				echo"<tr><td>".$rc2['studentName']."</td><td>".$rc['attanence_date']."</td><td>".$rc['attanence_status']."</td></tr>";
+          				echo"<tr><td>".$selectStudent."</td><td>".$rc2['studentName']."</td><td>".$rc['attanence_date']."</td><td>".$rc['attanence_status']."</td><td><select id='selection' class='selection'><option value='Present'>Present</option><option value='Late'>Late</option><option value='ABS' selected>Absent</option><option value='EarlyLeave' >Early Leave</option><option value='PersonalLeave'>Personal Leave</option></select></td><td><button id='btnConfirmEdit'>Confirm Edit</button></td></tr>";
               	}
             }
           mysqli_free_result($rs);
 
         ?>";
 
-
         $('#studentShowList').append(varStudentList);
 
-        $("#studentShowList tr:not(:first-child)").click(function(){
-          var selectStuID = $(this).find('td:first').text();
-          $("#searchStudentID").val(selectStuID);
-          $("form[name='teacherSelectStudent']").submit();
+        $(document).on('click', '#btnConfirmEdit', function() {
+           var newestAttendance = $(this).closest("tr").find("#selection").val();
+           var day = $(this).closest("tr").find("td:eq(2)").text();
+           var id = $(this).closest("tr").find("td:eq(0)").text();
+
+           $.ajax({
+              type: 'post',
+              url: 'teacherFinalEditAttendance.php',
+              data: {stuID:id,day:day,newStatus:newestAttendance} ,
+              dataType: 'json',
+              cache: false,
+              success: function(data) {
+              }
+           });
+           alert("Update Successful!");
+           location.reload();
         });
+
       });
     </script>
 </head>
@@ -136,7 +143,7 @@
       <button id="backpageBtn">Back To Select Class</button>
 
       <table class="classTable" id="studentShowList" name="studentShowList">
-        <tr class="firstRow"><th>Student Name</th><th>Date</th><th>Current Status</th><th>Expect Status</th><th>Confirm</th></tr>
+        <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Date</th><th>Current Status</th><th>Expect Status</th><th>Confirm</th></tr>
       </table>
 
     </center>
