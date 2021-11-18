@@ -44,6 +44,13 @@
     margin-bottom: 35px;
     font-weight: bold;
     font-size:20px;
+  }#btnView{
+    width: 150px;
+    height:30px;
+    background-color: #11d6ee;
+    font-weight: bold;
+    color:#fff;
+    font-size: 24px;
   }
   #btnDelete{
     width: 150px;
@@ -106,7 +113,7 @@
             $sql = "SELECT * FROM board WHERE teacherID='$tID'";
             $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
             while($rc = mysqli_fetch_array($rs)){
-              echo "<tr><td>".$rc['topicName']."</td><td>".$rc['day']."</td><td><button id='btnDelete'>Delete</button></td></tr>";
+              echo "<tr><td>".$rc['topicName']."</td><td>".$rc['day']."</td><td><button id='btnView'>View</button></td><td><button id='btnDelete'>Delete</button></td></tr>";
             };
         ?>";
 
@@ -149,8 +156,26 @@
 
             }
          });
-location.reload();
+         location.reload();
        });
+
+       $(document).on('click', '#btnView', function() {
+          var topic = $(this).closest("tr").find("td:eq(0)").text();
+          var day = $(this).closest("tr").find("td:eq(1)").text();
+          var tID = "<?php echo $_SESSION['teacherID']; ?>";
+          $.ajax({
+             type: 'post',
+             url: 'teacherViewContent.php',
+             data: {topic:topic,
+             day:day,
+             tID:tID},
+             success: function(data) {
+               myWindow=window.open('','','width=700,height=700');
+               myWindow.document.write("<p>"+data+"</p>");
+             }
+          });
+
+        });
     </script>
 </head>
 <body>
@@ -183,7 +208,7 @@ location.reload();
       <br>
       <button id="btnSubmit">Upload information</button>
       <table id="mainTable">
-        <tr><th width="40%">Topic</th><th width="20%">Date</th><th width="20%">Delete</th></tr>
+        <tr><th width="40%">Topic</th><th width="20%">Date</th><th width="20%">View</th><th width="20%">Delete</th></tr>
       </table>
     </center>
   </div>
