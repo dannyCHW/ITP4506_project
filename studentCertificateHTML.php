@@ -63,28 +63,50 @@
 
                     var content = "";
 
-                    content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanence status</th><th>attanence Date</th><th>Certificate Required</th></tr></thead><tbody id='TBbody'>";
+                    content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanence status</th><th>attanence Date</th><th>Certificate Required</th><th>attanenceID</th><th>Uploaded File</th></tr></thead><tbody id='TBbody'>";
                     for (let i in myObjarr) {
 
-                        content += "<tr><td id='theid'>" +
+                        content += "<tr><td>" +
                             myObjarr[i].attanence_status + "</td><td>" + myObjarr[i].attanence_date +
-                            "</td><td>" + "<input type='file' id='fileCert' name='fileCert'/> <button id='btnUploads' name='btnUploads'>Upload</button>" +
+                            "</td><td>" + "<input type='file' id='fileCert' name='fileCert'/><button id='btnUploads' name='btnUploads'>Upload</button>" +
+                            "</td><td>" + "<div id='attID'>" + myObjarr[i].attanenceID + "</div>" +
+                            "</td><td>" + myObjarr[i].fileName +
                             "</td></tr>";
                     }
                     content += "</tbody></table>";
 
                     $('table').replaceWith(content);
+
+                    
                 }
             });
 
         });
 
         $(document).on('click', '#btnUploads', function() {
+            var attID = $(this).parent().siblings().children('#attID').text();
+            //alert(attID);
+
             var file_data = $('#fileCert').prop('files')[0];
             var form_data = new FormData();
             form_data.append('file', file_data);
+            form_data.append('attID', attID);
 
-            
+            $.ajax({
+                url: 'studentCertificateUpload.php', 
+                dataType: 'text', 
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function(data) {
+
+                    alert(data);
+
+                    location.reload();
+                }
+            });
         });
     </script>
     <style></style>

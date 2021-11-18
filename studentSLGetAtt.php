@@ -14,6 +14,8 @@ $sql = "SELECT * FROM attanence WHERE attanence_status = 'SickLeave' AND student
         $myObj = new stdClass();
         $myObj->attanence_status = $row["attanence_status"];
         $myObj->attanence_date   = $row["attanence_date"];
+        $myObj->attanenceID   = $row["attanenceID"];
+        $myObj->fileName   = $row["fileName"];
 
         array_push($arr, $myObj);  
     }
