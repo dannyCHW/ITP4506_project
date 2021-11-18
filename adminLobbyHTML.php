@@ -96,6 +96,20 @@
     background-color: #7c8488;
     font-weight: bold;
   }
+  #btnDestory{
+    background-color: red;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    border-radius: 12px;
+    height:50px;
+    margin-bottom: 35px;
+    font-weight: bold;
+    font-size:20px;
+  }
   </style>
   <?php include 'adminCheckSession.php'; ?>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -111,16 +125,80 @@
       var table_body = "<?php
         require_once('connectDB.php');
 
-          $sql = "SELECT * FROM board ";
+          $sql = "SELECT * FROM board";
           $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
           while($rc = mysqli_fetch_array($rs)){
-            echo "<tr><td>".$rc['topicName']."</td><td>".$rc['day']."</td><td><button id='btnView'>View</button></td><td><button id='btnDelete'>Delete</button></td></tr>";
+            echo "<tr><td>".$rc['topicName']."</td><td>".$rc['day']."</td><td><button id='btnView'>View</button></td></tr>";
           };
       ?>";
 
       $("#mainTable").append(table_body);
 
+      $("#btnSubmit").click(function(){
+        var topic = $("#topic").val();
+        var contents = $("#contends").val();
+        if(topic==="" ||contents===""){
+          alert("Topic Or Contents Cannot Empty.");
+        }else{
+          $.ajax({
+             type: 'post',
+             url: 'adminCreateContents.php',
+             data: {topic:topic,
+             contents:contents} ,
+             success: function(data) {
+             }
+          });
+           location.reload();
+        }
+      });
+
     });
+    $(document).on('click', '#btnView', function() {
+       var topic = $(this).closest("tr").find("td:eq(0)").text();
+       var day = $(this).closest("tr").find("td:eq(1)").text();
+       $.ajax({
+          type: 'post',
+          url: 'studentViewContent.php',
+          data: {topic:topic,
+          day:day},
+          success: function(data) {
+            myWindow=window.open('','','width=700,height=700');
+            myWindow.document.write("<p>"+data+"</p>");
+          }
+       });
+
+     });
+
+     $(document).on('click', '#btnDelete', function() {
+        var topic = $(this).closest("tr").find("td:eq(0)").text();
+        var day = $(this).closest("tr").find("td:eq(1)").text();
+        $.ajax({
+           type: 'post',
+           url: 'teacherDeleteContents.php',
+           data: {topic:topic,
+           day:day,
+           tID:tID},
+           success: function(data) {
+
+           }
+        });
+        location.reload();
+      });
+
+      $(document).on('click', '#btnDestory', function() {
+        var r = confirm("Press a button!");
+        if (r == true) {
+          $.ajax({
+             type: 'post',
+             url: 'adminDeleteAllContents.php',
+             success: function(data) {
+               alert("Delete Successful, Now Board Is Empty.")
+             }
+          });
+        } else {
+        }
+          location.reload();
+      });
   </script>
 
 
@@ -145,8 +223,9 @@
       <br>
       <button id="btnSubmit">Upload information</button>
       <table id="mainTable">
-        <tr><th width="40%">Topic</th><th width="20%">Date</th><th width="20%">View</th><th width="20%">Delete</th></tr>
+        <tr><th width="40%">Topic</th><th width="30%">Date</th><th width="30%">View</th></tr>
       </table>
+          <button id="btnDestory">Clear All Record On Board In This Year</button>
     </center>
   </div>
 
