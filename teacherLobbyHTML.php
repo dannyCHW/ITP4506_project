@@ -135,7 +135,6 @@
                classID:classID,
              teacherID:teacherID} ,
                success: function(data) {
-
                }
             });
              location.reload();
