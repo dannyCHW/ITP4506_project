@@ -71,6 +71,17 @@
             }
 
             /*  */
+
+            .btnWithdraw {
+                background-color: #e8edf2;
+                width: 160px;
+                height: 30px;
+                border-radius: 5px;
+                cursor: pointer;
+                display: inline-block;
+                text-align: center;
+                text-decoration: none;
+            }
         </style>
         <script type="text/javascript" language="javascript">
             $(document).ready(function() {
@@ -111,29 +122,60 @@
                     datatype: 'json',
                     cache: false,
                     success: function(data) {
-
+                        if(data = "[]"){
+                            $('#noSL').replaceWith('<h3>No Sick Leave Record</h3>');
+                        }
                         const myJSON = data;
                         //alert(myJSON);
                         const myObjarr = JSON.parse(myJSON);
-                        alert(myObjarr[0].attanenceID + myObjarr[0].fileName);
+                        //alert(myObjarr[0].attanenceID + myObjarr[0].fileName);
 
                         var content = "";
+                        var btnWithdraw = "";
 
-                        content += "<table class='styled-table'><thead id='TBtitle'><tr><th>Stdeunt Name</th><th>attanence Status</th><th>attanence Date</th><th>Uploaded File</th></tr></thead><tbody id='TBbody'>";
+                        content += "<table class='styled-table'><thead id='TBtitle'><tr><th>attanence ID</th><th>Stdeunt Name</th><th>attanence Status</th><th>attanence Date</th><th>Uploaded File</th><th>Withdraw Sick Leave<br />(Change to ABS)</th></tr></thead><tbody id='TBbody'>";
                         for (let i in myObjarr) {
 
-                            content += "<tr><td>" +
-                                myObjarr[0].studentName + "</td><td>" +
-                                myObjarr[0].attanence_status + "</td><td>" +
-                                myObjarr[0].attanence_date + "</td><td>" +
-                                '<a href = "http://127.0.0.1/uploads/' 
-                                + myObjarr[0].attanenceID + '/' + myObjarr[0].fileName 
-                                + '" download="' + myObjarr[0].fileName +'">' + myObjarr[0].fileName + '</a>' +
+                            if (myObjarr[i].attanence_status == 'SickLeave') {
+                                btnWithdraw = "<button class='btnWithdraw' id='btnWithdraw'>Withdraw Sick Leave</button>";
+                            } else {
+                                btnWithdraw = "";
+                            }
+
+                            content += "<tr><td id='attID'>" +
+                                myObjarr[i].attanenceID + "</td><td>" +
+                                myObjarr[i].studentName + "</td><td>" +
+                                myObjarr[i].attanence_status + "</td><td>" +
+                                myObjarr[i].attanence_date + "</td><td>" +
+                                '<a href = "http://127.0.0.1/uploads/' +
+                                myObjarr[i].attanenceID + '/' + myObjarr[i].fileName +
+                                '" download="' + myObjarr[i].fileName + '">' + myObjarr[i].fileName + '</a>' + "</td><td>" +
+                                btnWithdraw +
                                 "</td></tr>";
                         }
                         content += "</tbody></table>";
 
                         $('table').replaceWith(content);
+                    }
+                });
+            });
+
+            $(document).on('click', '#btnWithdraw', function() {
+                attRecordID = $(this).parent().siblings('#attID').text();
+
+                var passdata = {
+                    attID: attRecordID,
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: 'teacherSLChangeStatus.php',
+                    data: passdata,
+                    datatype: 'text',
+                    cache: false,
+                    success: function(data) {
+                        alert(data);
+                        location.reload();
                     }
                 });
             });
@@ -148,15 +190,18 @@
             <table class='styled-table'>
                 <thead id='TBtitle'>
                     <tr>
+                        <th>attanence ID</th>
                         <th>Stdeunt Name</th>
                         <th>attanence Status</th>
                         <th>attanence Date</th>
                         <th>Uploaded File</th>
+                        <th>Withdraw Sick Leave<br />(Change to ABS)</th>
                     </tr>
                 </thead>
                 <tbody id='TBbody'>
                 </tbody>
             </table>
+            <div id="noSL"><div>
         </center>
     </body>
 
