@@ -1,8 +1,8 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <?php include 'teacherCheckSession.php'; ?>
-      <title>View Class List</title>
+    <title>View Class List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">
     <link rel="stylesheet" type="text/css" href="adminCss/teacherClass.css">
@@ -16,7 +16,8 @@
 
         var varClassList = "<?php
         			require_once('connectDB.php');
-        			$sql = "SELECT * FROM class ";
+              $tid = $_SESSION['teacherID'];
+        			$sql = "SELECT * FROM class where teacherID ='$tid' ";
         		 	$rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
         			while($rc = mysqli_fetch_array($rs)){
         				echo"<tr><td>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";

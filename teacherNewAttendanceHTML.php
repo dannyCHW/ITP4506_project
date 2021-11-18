@@ -94,6 +94,9 @@
       height:40px;
       font-size: 8px;
       padding: 0px;
+      background-color: #ea6715;
+      color:#fff;
+      font-weight: bold;
     }
     </style>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">

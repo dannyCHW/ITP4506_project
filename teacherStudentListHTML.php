@@ -142,10 +142,6 @@
 
         });
 
-        $("#backpageBtn").click(function(){
-            window.location.replace("teacherClassManagementHTML.php");
-        });
-
         /* */
 
         $("#studentShowList tr:not(:first-child)").click(function(){
@@ -170,7 +166,6 @@
       <h3 id="topic"> Student Lsit & Class Information </h3>
     </div>
     <center class="divStudentList"  >
-      <button id="backpageBtn">Back To Class List</button>
 
       <form id="classInfoForm" name="classInfoForm" method="POST" action="editClassInfo.php">
         <p style="text-align:center; font-size:30px;">Class Information:</p><textarea  type="text"class="classInfoDiv" name="textArea"id="textArea" style="height:150px;width:700px;font-size:30px; margin-bottom:30px;background-color:lightblue;" readonly></textarea><br/>
@@ -179,7 +174,7 @@
         <button id="btnConfirmEditClassInfo"  hidden>Confirm Edit</button>
 
 
-      <table class="classTable" id="studentShowList" name="studentShowList">
+      <table class="classTable" id="studentShowList" name="studentShowList" style="padding-right:100px;padding-left:100px;">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
       </table>
 

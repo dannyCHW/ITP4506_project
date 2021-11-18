@@ -2,10 +2,19 @@
 <html>
 
 <head>
-
-
-    <title>Teacher Profile</title>
+  <title>Teacher Profile</title>
   <?php include 'teacherCheckSession.php'; ?>
+
+  <style>
+    p{
+      font-weight: bold;
+      color:#504a57;
+    }
+    button{
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
 
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="adminCss/adminMenu.css">

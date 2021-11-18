@@ -115,6 +115,7 @@
     $("#backPageBtn").click(function(){
       window.location.replace("teacherSelectAttendanceClassHTML.php");
     });
+    $("#searchBtn").click();
   });
   </script>
   </head>
@@ -150,7 +151,7 @@
               </select>
             </p>
             <button type="button" id="searchBtn" >Search</button>
-          <table id="attendaceForm" class="studebtTable">
+          <table id="attendaceForm" class="studebtTable" style="padding-left:100px;padding-right:100px;"  >
             <tr class="firstRow"><th>Date</th><th>Status</th></tr>
           </table>
           </center>

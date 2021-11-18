@@ -169,7 +169,7 @@
   <center class="divTable"  >
     <button id="backPaeggBtn">Back To Class List</button>
 
-    <table class="classTable" id="studentShowList" name="studentShowList">
+    <table class="classTable" id="studentShowList" name="studentShowList" style="padding-left:100px;padding-right:100px;">
       <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Attendance Rate</th></tr>
     </table>
     <button id="reportBtn" onclick="exportToExcel()">Generation Report</button>

@@ -141,7 +141,7 @@
     <center class="divStudentList"  >
       <button id="backpageBtn">Back To Select Class</button>
 
-      <table class="classTable" id="studentShowList" name="studentShowList">
+      <table class="classTable" id="studentShowList" name="studentShowList" style="padding-right:100px;padding-left:100px;">
         <tr class="firstRow"><th>Student ID</th><th>Student Name</th><th>Student Information</th></tr>
       </table>
 

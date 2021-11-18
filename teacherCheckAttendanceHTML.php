@@ -16,7 +16,8 @@
 
         var varClassList = "<?php
               require_once('connectDB.php');
-              $sql = "SELECT * FROM class ";
+              $tid = $_SESSION['teacherID'];
+              $sql = "SELECT * FROM class where teacherID ='$tid' ";
               $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
               while($rc = mysqli_fetch_array($rs)){
                 echo"<tr><td>".$rc['classID']."</td><td>".$rc['classCode']."</td><td>".$rc['schoolYear']."</td><td>".$rc['classInfo']."</td></tr>";
