@@ -159,7 +159,6 @@
                 day:day,
                 stuID:cellValue,
                 status:finallyStatus} ,
-
               success: function(data) {
                 var final = data;
               }
