@@ -130,7 +130,6 @@
            var tab2 = data.b;
            $("#table1").append(tab1);
            $("#table2").append(tab2);
-           alert(tab1);
          }
       });
        $("#submitbtn").removeAttr('hidden');
@@ -159,7 +158,7 @@
                 stuID:cellValue,
                 status:finallyStatus} ,
               success: function(data) {
-                var final = data;
+  
               }
            });
       }
@@ -183,14 +182,12 @@
             }
          });
        }
-
-       if(final="wrong"){
-         alert("That day already created attendance!");
+       if(final==="c023x4e"){
+         alert(final);
        }else{
          alert("Create successful!");
          location.reload();
        }
-
     });
     </script>
 </head>
