@@ -230,11 +230,12 @@
           <br />
 
           <hr>
-
-          <table id="table1" name="table1"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
-          <table id="table2" name="table2"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
+          <div>
+            <table id="table1" name="table1"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
+            <table id="table2" name="table2"style="margin-bottom:50px;"><tr><th>Studnet Name</th><th>Studnet ID</th><th>Status</th></table>
+          </div>
           <br />
-          <button class="registerbtn" id="submitbtn" hidden><b>Create Attendance</b> </button>
+          <button class="registerbtn" id="submitbtn" style="margin-left:100px;" hidden><b>Create Attendance</b> </button>
         </div>
     </div>
   </center>

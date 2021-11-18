@@ -5,6 +5,10 @@
     h1{
       margin-top: 100px;
       margin-bottom: 100px;
+      margin-bottom: 30px;
+    }
+    hr{
+      margin-bottom: 50px;
     }
   </style>
     <?php include 'teacherCheckSession.php'; ?>
@@ -42,6 +46,7 @@
     <form action="createClass.php" class="proBody" method="POST" name="createClassForm" id="createClassForm">
       <div class="container">
       <h1 class="r_text">Create Class</h1>
+        <hr>
 
       <div class="canvas_body">
 
