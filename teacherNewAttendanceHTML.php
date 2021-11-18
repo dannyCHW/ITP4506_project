@@ -114,11 +114,9 @@
 
     $(document).on('click', 'tr td input:radio', function() {
       $(this).nextUntil().remove();
-      alert("ASD");
     });
 
     $(document).on('change', '#classSelect', function() {
-
       var classID =  $('#classSelect').val();
       $("td").remove();
       $.ajax({
@@ -132,6 +130,7 @@
            var tab2 = data.b;
            $("#table1").append(tab1);
            $("#table2").append(tab2);
+           alert(tab1);
          }
       });
        $("#submitbtn").removeAttr('hidden');

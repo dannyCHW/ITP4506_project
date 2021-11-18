@@ -1,9 +1,13 @@
 <?php
   require_once('connectDB.php');
 
-  $selectClass = $_POST['id'];
-
-    $sql = "SELECT * FROM allocation WHERE classID='$selectClass'";
+    $selectClass = $_POST['id'];
+    $sqltest = "SELECT * FROM class where classCode='$selectClass'";
+    $rstest = mysqli_query($conn, $sqltest)or die(mysqli_error($conn));
+    while($rctest = mysqli_fetch_array($rstest)){
+      $classID = $rctest['classID'];
+    }
+    $sql = "SELECT * FROM allocation WHERE classID='$classID'";
     $rs = mysqli_query($conn, $sql)or die(mysqli_error($conn));
     $row_cnt = mysqli_num_rows($rs);
     $result = $row_cnt/2;
@@ -14,7 +18,6 @@
     $count_loop = 0 ;
     $table1 ="<tbody id='t1'>";
     $table2 ="<tbody id='t2'>";
-
     while($rc = mysqli_fetch_array($rs)){
       $stuID = $rc['studentID'];
       $sql2 = "SELECT * FROM student WHERE studentID=$stuID";

@@ -12,7 +12,7 @@
     echo "wrong";
   }
   else{
-    $sql2="INSERT INTO attanence values('','$status','$day','','$classID','$stuID')";
+    $sql2="INSERT INTO attanence values('','$status','$day','','$classID','$stuID','')";
     $rs2 = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
   }
 
