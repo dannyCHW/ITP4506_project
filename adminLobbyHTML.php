@@ -146,6 +146,7 @@
              data: {topic:topic,
              contents:contents} ,
              success: function(data) {
+               alert("Message has been upload.");
              }
           });
            location.reload();

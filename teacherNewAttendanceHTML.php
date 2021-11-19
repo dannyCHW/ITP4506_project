@@ -158,7 +158,7 @@
                 stuID:cellValue,
                 status:finallyStatus} ,
               success: function(data) {
-  
+
               }
            });
       }
@@ -182,12 +182,8 @@
             }
          });
        }
-       if(final==="c023x4e"){
-         alert(final);
-       }else{
-         alert("Create successful!");
-         location.reload();
-       }
+       alert("Create successful!");
+       location.reload();
     });
     </script>
 </head>

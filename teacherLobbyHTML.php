@@ -135,7 +135,7 @@
                classID:classID,
              teacherID:teacherID} ,
                success: function(data) {
-
+alert("Message has been upload.");
                }
             });
              location.reload();
