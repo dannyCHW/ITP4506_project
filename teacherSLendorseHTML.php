@@ -111,6 +111,7 @@
 
             $(document).on('click', '#btnClasses', function() {
                 classID = $(this).children('#classID').text();
+                //alert(classID);
                 classCode = $(this).children().siblings().children('#classCode').text();
                 var passdata = {
                     classID: classID
@@ -122,8 +123,10 @@
                     datatype: 'json',
                     cache: false,
                     success: function(data) {
-                        if(data = "[]"){
+                        if(data == "[]"){
                             $('#noSL').replaceWith('<h3>No Sick Leave Record</h3>');
+                        } else {
+                            $('#noSL').replaceWith('<br />');
                         }
                         const myJSON = data;
                         //alert(myJSON);
