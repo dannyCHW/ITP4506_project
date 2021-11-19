@@ -86,7 +86,7 @@
 
   <div class="canvas">
     <div class="head" style="height:80px;">
-      <h3 id="topic"> View Class </h3>
+      <h3 id="topic"> View Student Information </h3>
     </div>
 
     <div class="divEditStudent">
