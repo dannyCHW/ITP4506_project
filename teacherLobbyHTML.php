@@ -127,6 +127,7 @@
           if(topic=="" || contents==""){
             alert("Topic Or Contents Cannot Empty.");
           }else{
+            alert("Message has been upload.");
             $.ajax({
                type: 'post',
                url: 'teacherCreateContents.php',
@@ -135,7 +136,6 @@
                classID:classID,
              teacherID:teacherID} ,
                success: function(data) {
-alert("Message has been upload.");
                }
             });
              location.reload();

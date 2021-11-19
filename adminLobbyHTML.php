@@ -140,13 +140,13 @@
         if(topic==="" ||contents===""){
           alert("Topic Or Contents Cannot Empty.");
         }else{
+                         alert("Message has been upload.");
           $.ajax({
              type: 'post',
              url: 'adminCreateContents.php',
              data: {topic:topic,
              contents:contents} ,
              success: function(data) {
-               alert("Message has been upload.");
              }
           });
            location.reload();
@@ -169,22 +169,6 @@
        });
 
      });
-
-     $(document).on('click', '#btnDelete', function() {
-        var topic = $(this).closest("tr").find("td:eq(0)").text();
-        var day = $(this).closest("tr").find("td:eq(1)").text();
-        $.ajax({
-           type: 'post',
-           url: 'teacherDeleteContents.php',
-           data: {topic:topic,
-           day:day,
-           tID:tID},
-           success: function(data) {
-
-           }
-        });
-        location.reload();
-      });
 
       $(document).on('click', '#btnDestory', function() {
         var r = confirm("You really want to delete all board?");
