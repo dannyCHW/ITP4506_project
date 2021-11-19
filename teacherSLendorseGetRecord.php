@@ -3,7 +3,6 @@ require_once('connectDB.php');
 
 session_start();
 $classID = $_POST['classID'];
-$teacherID = $_SESSION['teacherID'];
 
 $sql = "SELECT attanenceID, attanence_status, attanence_date, fileName, studentName 
 FROM attanence, student 

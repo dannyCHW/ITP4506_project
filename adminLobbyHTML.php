@@ -149,6 +149,7 @@
                alert("Message has been upload.");
              }
           });
+
            location.reload();
         }
       });
