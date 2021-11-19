@@ -95,7 +95,6 @@
             	echo"<tr><td>".$rc5['attanence_date']."</td><td>".$rc5['attanence_status']."</td></tr>";
             }
           }
-          echo "alert('$currentClassID')";
         ?>";
 
             $('#attendaceForm').append(attendaceList);
