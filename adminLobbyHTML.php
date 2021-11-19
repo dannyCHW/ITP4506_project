@@ -187,7 +187,7 @@
       });
 
       $(document).on('click', '#btnDestory', function() {
-        var r = confirm("Press a button!");
+        var r = confirm("You really want to delete all board?");
         if (r == true) {
           $.ajax({
              type: 'post',
